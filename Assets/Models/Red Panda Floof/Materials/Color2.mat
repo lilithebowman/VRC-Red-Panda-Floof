@@ -284,7 +284,7 @@ Material:
     - _FurMarkingsActive: 0
     - _FurMinHeight: 0.01
     - _FurShadowCastSize: 0.35
-    - _FurShapeGroup: 0
+    - _FurShapeGroup: 1
     - _FurShapeMask1Bits: 0
     - _FurShapeMask2Bits: 0
     - _FurShapeMask3Bits: 0
@@ -412,7 +412,7 @@ Material:
     - _ProximityOcclusionRange: 0.2
     - _QualityGroup: 0
     - _RenderPipeline: 1
-    - _ScaleCalibration: 0.0010000002
+    - _ScaleCalibration: 0.00025
     - _SelectedUV: 0
     - _SmoothnessTextureChannel: 0
     - _SoftenBrightness: 0.5
