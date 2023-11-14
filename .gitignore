@@ -1,0 +1,35 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools*
+
+# Visual Studio 2015 cache directory
+/.vs/
+/.vs/*
+
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.unitypackage
+
+Assets/Furality/Furality Aqua/Avatar Assets/Badges/Attendee/Textures/Aqua_Badge_Attendee.psd
+Assets/Props/Ball Cap/Textures/Substance/Ball Cap Women Want Me/Ball Cap Women Want Me.spp
