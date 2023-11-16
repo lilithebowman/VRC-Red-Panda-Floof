@@ -151,7 +151,7 @@ Material:
     - _AudioLinkStrength: 1
     - _BodyExpansion: 1
     - _BodyResizeCutoff: 0.2
-    - _BodyShrinkOffset: 0
+    - _BodyShrinkOffset: 1
     - _BumpScale: 1
     - _CellStretch: 0
     - _CoarseMapActive: 1
@@ -412,7 +412,7 @@ Material:
     - _ProximityOcclusionRange: 0.2
     - _QualityGroup: 0
     - _RenderPipeline: 1
-    - _ScaleCalibration: 0.00025
+    - _ScaleCalibration: 0.032
     - _SelectedUV: 0
     - _SmoothnessTextureChannel: 0
     - _SoftenBrightness: 0.5

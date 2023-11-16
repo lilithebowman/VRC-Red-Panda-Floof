@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1414,6 +1414,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   colliders:
   - {fileID: 732679706}
+  - {fileID: 732679710}
   limitType: 0
   maxAngleX: 45
   maxAngleXCurve:
@@ -1674,9 +1675,15 @@ MonoBehaviour:
   insideBounds: 0
   radius: 0.5
   height: 2
-  position: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: -0.25, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   bonesAsSpheres: 0
+--- !u!1 &732679707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3646755201719406309, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 732679684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &732679708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5017276502627805711, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
@@ -1689,6 +1696,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 732679684}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &732679710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732679707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631200402, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootTransform: {fileID: 0}
+  shapeType: 2
+  insideBounds: 1
+  radius: 0.0015
+  height: 0.005
+  position: {x: 0, y: -0.001, z: 0.001}
+  rotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+  bonesAsSpheres: 0
 --- !u!4 &732679721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 902978311734085834, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,

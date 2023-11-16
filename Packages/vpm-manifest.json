@@ -5,6 +5,12 @@
     },
     "com.vrchat.core.vpm-resolver": {
       "version": "0.1.26"
+    },
+    "vrchat.blackstartx.gesture-manager": {
+      "version": "3.8.7"
+    },
+    "dev.vrlabs.av3manager": {
+      "version": "2.0.25"
     }
   },
   "locked": {
@@ -21,6 +27,18 @@
     "com.vrchat.core.vpm-resolver": {
       "version": "0.1.26",
       "dependencies": {}
+    },
+    "vrchat.blackstartx.gesture-manager": {
+      "version": "3.8.7",
+      "dependencies": {
+        "com.vrchat.avatars": "3.2.x || 3.3.x || 3.4.x"
+      }
+    },
+    "dev.vrlabs.av3manager": {
+      "version": "2.0.25",
+      "dependencies": {
+        "com.vrchat.avatars": ">=3.2.0 < 3.5.0"
+      }
     }
   }
 }
