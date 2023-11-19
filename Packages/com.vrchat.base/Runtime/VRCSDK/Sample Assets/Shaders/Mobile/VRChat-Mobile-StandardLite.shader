@@ -1,4 +1,6 @@
-﻿Shader "VRChat/Mobile/Standard Lite"
+﻿// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+
+Shader "VRChat/Mobile/Standard Lite"
 {
     Properties
     {
@@ -32,14 +34,16 @@
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" "PreviewType"="Plane" }
+        Blend SrcAlpha OneMinusSrcAlpha
+		Cull Off
         LOD 200
 
         CGPROGRAM
         #define UNITY_BRDF_PBS BRDF2_Unity_PBS
         #include "UnityPBSLighting.cginc"
 
-        #pragma surface surf StandardMobile vertex:vert exclude_path:prepass exclude_path:deferred noforwardadd noshadow nodynlightmap nolppv noshadowmask
+        #pragma surface surf StandardMobile vertex:vert nolppv noshadowmask
 
         #pragma target 3.0
         #pragma multi_compile _ _EMISSION
@@ -71,29 +75,29 @@
             fixed Alpha;        // alpha for transparencies
         };
 
-        UNITY_DECLARE_TEX2D(_MainTex);
+        sampler2D _MainTex;
         float4 _MainTex_ST;
         half4 _Color;
 
-        UNITY_DECLARE_TEX2D(_MetallicGlossMap);
+        sampler2D _MetallicGlossMap;
         uniform half _Glossiness;
         uniform half _Metallic;
 
-        UNITY_DECLARE_TEX2D(_BumpMap);
+        sampler2D _BumpMap;
         uniform half _BumpScale;
 
-        UNITY_DECLARE_TEX2D(_OcclusionMap);
+        sampler2D _OcclusionMap;
         uniform half _OcclusionStrength;
 
-        UNITY_DECLARE_TEX2D(_EmissionMap);
+        sampler2D _EmissionMap;
         half4 _EmissionColor;
 
 #ifdef _DETAIL
         uniform half _UVSec;
         float4 _DetailAlbedoMap_ST;
-        UNITY_DECLARE_TEX2D(_DetailMask);
-        UNITY_DECLARE_TEX2D(_DetailAlbedoMap);
-        UNITY_DECLARE_TEX2D(_DetailNormalMap);
+        sampler2D _DetailMask;
+        sampler2D _DetailAlbedoMap;
+        sampler2D _DetailNormalMap;
         uniform half _DetailNormalMapScale;
 #endif
 
@@ -108,15 +112,20 @@
 
         inline half4 LightingStandardMobile(SurfaceOutputStandardMobile s, float3 viewDir, UnityGI gi)
         {
-            s.Normal = normalize(s.Normal);
+			s.Normal = normalize(s.Normal);
 
-            half oneMinusReflectivity;
-            half3 specColor;
-            s.Albedo = DiffuseAndSpecularFromMetallic(s.Albedo, s.Metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity);
+			half oneMinusReflectivity;
+			half3 specColor;
+			s.Albedo = DiffuseAndSpecularFromMetallic (s.Albedo, s.Metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity);
 
-            half4 c = UNITY_BRDF_PBS(s.Albedo, specColor, oneMinusReflectivity, s.Smoothness, s.Normal, viewDir, gi.light, gi.indirect);
-            UNITY_OPAQUE_ALPHA(c.a);
-            return c;
+			// shader relies on pre-multiply alpha-blend (_SrcBlend = One, _DstBlend = OneMinusSrcAlpha)
+			// this is necessary to handle transparency in physically correct way - only diffuse component gets affected by alpha
+			half outputAlpha;
+			s.Albedo = PreMultiplyAlpha (s.Albedo, s.Alpha, oneMinusReflectivity, /*out*/ outputAlpha);
+
+			half4 c = UNITY_BRDF_PBS (s.Albedo, specColor, oneMinusReflectivity, s.Smoothness, s.Normal, viewDir, gi.light, gi.indirect);
+			c.a = outputAlpha;
+			return c;
         }
 
         inline UnityGI UnityGI_BaseMobile(UnityGIInput data, half occlusion, half3 normalWorld)
@@ -137,7 +146,7 @@
                 half3 bakedColor = DecodeLightmap(bakedColorTex);
 
                 #ifdef DIRLIGHTMAP_COMBINED
-                    fixed4 bakedDirTex = UNITY_SAMPLE_TEX2D_SAMPLER(unity_LightmapInd, unity_Lightmap, data.lightmapUV.xy);
+                    fixed4 bakedDirTex = tex2D_SAMPLER(unity_LightmapInd, unity_Lightmap, data.lightmapUV.xy);
                     o_gi.indirect.diffuse += DecodeDirectionalLightmap(bakedColor, bakedDirTex, normalWorld);
                 #else // not directional lightmap
                     o_gi.indirect.diffuse += bakedColor;
@@ -177,7 +186,7 @@
 
 	void vert(inout appdata_full v, out Input o)
 	{
-	    UNITY_INITIALIZE_OUTPUT(Input,o);
+			UNITY_INITIALIZE_OUTPUT(Input,o);
             o.texcoord0 = TRANSFORM_TEX(v.texcoord.xy, _MainTex); // Always source from uv0
 #ifdef _DETAIL
             o.texcoord1 = TRANSFORM_TEX(((_UVSec == 0) ? v.texcoord.xy : v.texcoord1.xy), _DetailAlbedoMap);
@@ -187,37 +196,39 @@
         void surf(Input IN, inout SurfaceOutputStandardMobile o)
         {
             // Albedo comes from a texture tinted by color
-            half4 albedoMap = UNITY_SAMPLE_TEX2D(_MainTex, IN.texcoord0) * _Color * IN.color;
-            o.Albedo = albedoMap.rgb;
+			half4 albedoMap = tex2D(_MainTex, IN.texcoord0) * _Color;
+            o.Albedo = albedoMap;
+			clip(albedoMap.a - 0.5);
 
             // Metallic and smoothness come from slider variables
-            half4 metallicGlossMap = UNITY_SAMPLE_TEX2D(_MetallicGlossMap, IN.texcoord0);
+            half4 metallicGlossMap = tex2D(_MetallicGlossMap, IN.texcoord0);
             o.Metallic = metallicGlossMap.r * _Metallic;
             o.Smoothness = metallicGlossMap.a * _Glossiness;
 
             // Occlusion is sampled from the Green channel to match up with Standard. Can be packed to Metallic if you insert it into multiple slots.
-            o.Occlusion = UNITY_SAMPLE_TEX2D(_OcclusionMap, IN.texcoord0).g * _OcclusionStrength;
+            o.Occlusion = tex2D(_OcclusionMap, IN.texcoord0).g * _OcclusionStrength;
 
-            o.Normal = UnpackScaleNormal(UNITY_SAMPLE_TEX2D(_BumpMap, IN.texcoord0), _BumpScale);
+            o.Normal = UnpackScaleNormal(tex2D(_BumpMap, IN.texcoord0), _BumpScale);
 
             #ifdef _DETAIL
-                half4 detailMask = UNITY_SAMPLE_TEX2D(_DetailMask, IN.texcoord0);
-                half4 detailAlbedoMap = UNITY_SAMPLE_TEX2D(_DetailAlbedoMap, IN.texcoord1);
+                half4 detailMask = tex2D(_DetailMask, IN.texcoord0);
+                half4 detailAlbedoMap = tex2D(_DetailAlbedoMap, IN.texcoord1);
                 o.Albedo *= LerpWhiteTo(detailAlbedoMap.rgb * unity_ColorSpaceDouble.rgb, detailMask.a);
 
-                half4 detailNormalMap = UNITY_SAMPLE_TEX2D(_DetailNormalMap, IN.texcoord1);
-                half3 detailNormalTangent = UnpackScaleNormal(UNITY_SAMPLE_TEX2D(_DetailNormalMap, IN.texcoord1), _DetailNormalMapScale);
+                half4 detailNormalMap = tex2D(_DetailNormalMap, IN.texcoord1);
+                half3 detailNormalTangent = UnpackScaleNormal(tex2D(_DetailNormalMap, IN.texcoord1), _DetailNormalMapScale);
                 o.Normal = lerp(o.Normal, BlendNormals(o.Normal, detailNormalTangent), detailMask.a);
 
             #endif
 
             #ifdef _EMISSION
-                o.Emission = UNITY_SAMPLE_TEX2D(_EmissionMap, IN.texcoord0) * _EmissionColor;
+                o.Emission = tex2D(_EmissionMap, IN.texcoord0) * _EmissionColor;
             #endif
+			o.Alpha = albedoMap.a;
         }
         ENDCG
     }
 
-    FallBack "VRChat/Mobile/Diffuse"
-    CustomEditor "StandardLiteShaderGUI"
+    Fallback "Legacy Shaders/Transparent/Cutout/VertexLit"
+    // CustomEditor "StandardLiteShaderGUI"
 }

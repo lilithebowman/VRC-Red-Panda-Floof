@@ -149,7 +149,7 @@ Material:
     - _AudioLinkStaticSkin: 0.5
     - _AudioLinkStaticTips: 0
     - _AudioLinkStrength: 1
-    - _BodyExpansion: 1
+    - _BodyExpansion: 0
     - _BodyResizeCutoff: 0.2
     - _BodyShrinkOffset: 1
     - _BumpScale: 1
@@ -265,7 +265,7 @@ Material:
     - _FurAnisotropicEnable: 1
     - _FurAnisotropicReflect: 0.5
     - _FurAnisotropicRefract: 0.5
-    - _FurCombStrength: 0.35
+    - _FurCombStrength: 0.475
     - _FurDebugCombing: 0
     - _FurDebugContact: 0
     - _FurDebugDensity: 0
@@ -289,7 +289,7 @@ Material:
     - _FurShapeMask2Bits: 0
     - _FurShapeMask3Bits: 0
     - _FurShapeMask4Bits: 0
-    - _FurShellSpacing: 0.5
+    - _FurShellSpacing: 0.256
     - _FurTouchRange: 3.5
     - _FurTouchStrength: 0
     - _FurTouchThreshold: 0.15
@@ -412,7 +412,7 @@ Material:
     - _ProximityOcclusionRange: 0.2
     - _QualityGroup: 0
     - _RenderPipeline: 1
-    - _ScaleCalibration: 0.032
+    - _ScaleCalibration: 0.0010000003
     - _SelectedUV: 0
     - _SmoothnessTextureChannel: 0
     - _SoftenBrightness: 0.5

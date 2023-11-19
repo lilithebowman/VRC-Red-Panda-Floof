@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
@@ -183,6 +183,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5017276502627805711, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5017276502627805711, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5017276502627805711, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5017276502627805711, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3725968505427818555, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000009415697
+      objectReference: {fileID: 0}
+    - target: {fileID: -3725968505427818555, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000009415696
+      objectReference: {fileID: 0}
+    - target: {fileID: -3725968505427818555, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -3725968505427818555, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -3.5527137e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -191,12 +251,62 @@ PrefabInstance:
     - target: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
-      value: 22
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[2]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[24]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -3.5527137e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 150244661840667119, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000009415697
+      objectReference: {fileID: 0}
+    - target: {fileID: 150244661840667119, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000009415696
+      objectReference: {fileID: 0}
+    - target: {fileID: 150244661840667119, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 150244661840667119, guid: e97024aaab3ed9646b60b75b36f64c5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
@@ -206,7 +316,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e97024aaab3ed9646b60b75b36f64c5e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e97024aaab3ed9646b60b75b36f64c5e, type: 3}
@@ -418,284 +528,10 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 3
---- !u!114 &143414472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143414466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 542108242, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  ViewPosition: {x: 0, y: 1.7, z: 0.21}
-  Animations: 0
-  ScaleIPD: 1
-  lipSync: 3
-  lipSyncJawBone: {fileID: 0}
-  lipSyncJawClosed: {x: 0, y: 0, z: 0, w: 1}
-  lipSyncJawOpen: {x: 0, y: 0, z: 0, w: 1}
-  VisemeSkinnedMesh: {fileID: 143414474}
-  MouthOpenBlendShapeName: Facial_Blends.Jaw_Down
-  VisemeBlendShapes:
-  - sil
-  - pp
-  - ff
-  - th
-  - dd
-  - kk
-  - ch
-  - ss
-  - nn
-  - rr
-  - aa
-  - ee
-  - ih
-  - oh
-  - ou
-  unityVersion: 2019.4.31f1
-  portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
-  portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  networkIDs: []
-  customExpressions: 0
-  expressionsMenu: {fileID: 0}
-  expressionParameters: {fileID: 0}
-  enableEyeLook: 1
-  customEyeLookSettings:
-    eyeMovement:
-      confidence: 0.5
-      excitement: 0.5
-    leftEye: {fileID: 732679708}
-    rightEye: {fileID: 143414473}
-    eyesLookingStraight:
-      linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyesLookingUp:
-      linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyesLookingDown:
-      linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyesLookingLeft:
-      linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyesLookingRight:
-      linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyelidType: 2
-    upperLeftEyelid: {fileID: 0}
-    upperRightEyelid: {fileID: 0}
-    lowerLeftEyelid: {fileID: 0}
-    lowerRightEyelid: {fileID: 0}
-    eyelidsDefault:
-      upper:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-      lower:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsClosed:
-      upper:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-      lower:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsLookingUp:
-      upper:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-      lower:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsLookingDown:
-      upper:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-      lower:
-        linked: 1
-        left: {x: 0, y: 0, z: 0, w: 0}
-        right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsSkinnedMesh: {fileID: 143414474}
-    eyelidsBlendshapes: 02000000ffffffffffffffff
-  customizeAnimationLayers: 0
-  baseAnimationLayers:
-  - isEnabled: 0
-    type: 0
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 2
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 3
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 4
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 5
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  specialAnimationLayers:
-  - isEnabled: 0
-    type: 6
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 7
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  - isEnabled: 0
-    type: 8
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
-  AnimationPreset: {fileID: 0}
-  animationHashSet: []
-  autoFootsteps: 1
-  autoLocomotion: 1
-  collider_head:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414486}
-    radius: 0.11245214
-    height: 0
-    position: {x: 0, y: 0.13103873, z: 0.00000005960466}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_torso:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414485}
-    radius: 0.17038202
-    height: 0.67887723
-    position: {x: 0, y: -0.2003038, z: 0.00000005960465}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_footR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414484}
-    radius: 0.067059875
-    height: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_footL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414483}
-    radius: 0.067059875
-    height: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_handR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414482}
-    radius: 0.017151609
-    height: 0.068606436
-    position: {x: -0.007134403, y: 0.05761824, z: 0.00546987}
-    rotation: {x: 0.019134246, y: 0, z: 0.7498266, w: 0.66135764}
-  collider_handL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414481}
-    radius: 0.017151609
-    height: 0.068606436
-    position: {x: 0.007134403, y: 0.05761824, z: 0.00546987}
-    rotation: {x: 0.019134246, y: 0, z: -0.7498266, w: 0.66135764}
-  collider_fingerIndexL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414480}
-    radius: 0.011172014
-    height: 0.05586007
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerMiddleL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414479}
-    radius: 0.0106729325
-    height: 0.05336466
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerRingL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414478}
-    radius: 0.010218195
-    height: 0.051090974
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerLittleL:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 0}
-    radius: 0
-    height: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerIndexR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414477}
-    radius: 0.011172014
-    height: 0.05586007
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerMiddleR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414476}
-    radius: 0.0106729325
-    height: 0.05336466
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerRingR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 143414475}
-    radius: 0.010218195
-    height: 0.051090974
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-  collider_fingerLittleR:
-    isMirrored: 1
-    state: 0
-    transform: {fileID: 0}
-    radius: 0
-    height: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!4 &143414473 stripped
+  fallbackStatus: 0
+--- !u!4 &143414472 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -5017276502627805711, guid: e97024aaab3ed9646b60b75b36f64c5e,
+  m_CorrespondingSourceObject: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
@@ -796,6 +632,280 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &143414488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143414466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 542108242, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  ViewPosition: {x: 0, y: 1.6, z: 0.2}
+  Animations: 0
+  ScaleIPD: 1
+  lipSync: 3
+  lipSyncJawBone: {fileID: 0}
+  lipSyncJawClosed: {x: 0, y: 0, z: 0, w: 1}
+  lipSyncJawOpen: {x: 0, y: 0, z: 0, w: 1}
+  VisemeSkinnedMesh: {fileID: 143414474}
+  MouthOpenBlendShapeName: Facial_Blends.Jaw_Down
+  VisemeBlendShapes:
+  - sil
+  - pp
+  - ff
+  - th
+  - dd
+  - kk
+  - ch
+  - ss
+  - nn
+  - rr
+  - aa
+  - ee
+  - ih
+  - oh
+  - ou
+  unityVersion: 2019.4.31f1
+  portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
+  portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  networkIDs: []
+  customExpressions: 0
+  expressionsMenu: {fileID: 0}
+  expressionParameters: {fileID: 0}
+  enableEyeLook: 1
+  customEyeLookSettings:
+    eyeMovement:
+      confidence: 0.5
+      excitement: 0.5
+    leftEye: {fileID: 852039025}
+    rightEye: {fileID: 143414472}
+    eyesLookingStraight:
+      linked: 1
+      left: {x: 0, y: 0, z: 0, w: 1}
+      right: {x: 0, y: 0, z: 0, w: 1}
+    eyesLookingUp:
+      linked: 1
+      left: {x: -0.043619387, y: 0, z: 0, w: 0.99904823}
+      right: {x: -0.043619387, y: 0, z: 0, w: 0.99904823}
+    eyesLookingDown:
+      linked: 1
+      left: {x: 0.043619715, y: 0, z: 0, w: 0.99904823}
+      right: {x: 0.043619715, y: 0, z: 0, w: 0.99904823}
+    eyesLookingLeft:
+      linked: 1
+      left: {x: 0, y: -0.1305262, z: 0, w: 0.9914449}
+      right: {x: 0, y: -0.1305262, z: 0, w: 0.9914449}
+    eyesLookingRight:
+      linked: 1
+      left: {x: 0, y: 0.1305262, z: 0, w: 0.9914449}
+      right: {x: 0, y: 0.1305262, z: 0, w: 0.9914449}
+    eyelidType: 2
+    upperLeftEyelid: {fileID: 0}
+    upperRightEyelid: {fileID: 0}
+    lowerLeftEyelid: {fileID: 0}
+    lowerRightEyelid: {fileID: 0}
+    eyelidsDefault:
+      upper:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+      lower:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+    eyelidsClosed:
+      upper:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+      lower:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+    eyelidsLookingUp:
+      upper:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+      lower:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+    eyelidsLookingDown:
+      upper:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+      lower:
+        linked: 1
+        left: {x: 0, y: 0, z: 0, w: 0}
+        right: {x: 0, y: 0, z: 0, w: 0}
+    eyelidsSkinnedMesh: {fileID: 143414474}
+    eyelidsBlendshapes: 06000000ffffffffffffffff
+  customizeAnimationLayers: 0
+  baseAnimationLayers:
+  - isEnabled: 0
+    type: 0
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 2
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 3
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 4
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 5
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  specialAnimationLayers:
+  - isEnabled: 0
+    type: 6
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 7
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  - isEnabled: 0
+    type: 8
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
+  AnimationPreset: {fileID: 0}
+  animationHashSet: []
+  autoFootsteps: 1
+  autoLocomotion: 1
+  collider_head:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414486}
+    radius: 0.11245214
+    height: 0
+    position: {x: 0, y: 0.13103873, z: 0.00000005960466}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_torso:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414485}
+    radius: 0.17038202
+    height: 0.67887723
+    position: {x: 0, y: -0.2003038, z: 0.00000005960465}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_footR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414484}
+    radius: 0.067059875
+    height: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_footL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414483}
+    radius: 0.067059875
+    height: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_handR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414482}
+    radius: 0.01715156
+    height: 0.06860624
+    position: {x: -0.007134401, y: 0.057618134, z: 0.005469709}
+    rotation: {x: 0.019134078, y: 0, z: 0.7498261, w: 0.66135824}
+  collider_handL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414481}
+    radius: 0.017151589
+    height: 0.068606354
+    position: {x: 0.007134401, y: 0.057618234, z: 0.0054696896}
+    rotation: {x: 0.019134048, y: 0, z: -0.7498261, w: 0.66135836}
+  collider_fingerIndexL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414480}
+    radius: 0.0111720115
+    height: 0.055860057
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerMiddleL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414479}
+    radius: 0.010672907
+    height: 0.053364534
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerRingL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414478}
+    radius: 0.010218147
+    height: 0.051090736
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerLittleL:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 0}
+    radius: 0
+    height: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerIndexR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414477}
+    radius: 0.011171916
+    height: 0.05585958
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerMiddleR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414476}
+    radius: 0.010672859
+    height: 0.053364296
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerRingR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 143414475}
+    radius: 0.010218147
+    height: 0.051090736
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  collider_fingerLittleR:
+    isMirrored: 1
+    state: 0
+    transform: {fileID: 0}
+    radius: 0
+    height: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!137 &712670191 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
@@ -1051,7 +1161,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 3
+  fallbackStatus: 0
 --- !u!114 &732679699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,24 +1360,24 @@ MonoBehaviour:
     isMirrored: 1
     state: 0
     transform: {fileID: 732679693}
-    radius: 0.00017151596
-    height: 0.00068606384
-    position: {x: -0.00007134483, y: 0.00057618186, z: 0.00005469773}
-    rotation: {x: 0.01913406, y: 0, z: 0.74982625, w: 0.66135806}
+    radius: 0.00017151574
+    height: 0.00068606297
+    position: {x: -0.00007134396, y: 0.00057618145, z: 0.000054698055}
+    rotation: {x: 0.019134061, y: 0, z: 0.7498261, w: 0.66135824}
   collider_handL:
     isMirrored: 1
     state: 0
     transform: {fileID: 732679692}
-    radius: 0.00017151596
-    height: 0.00068606384
-    position: {x: 0.00007134483, y: 0.00057618186, z: 0.00005469773}
-    rotation: {x: 0.01913406, y: 0, z: -0.74982625, w: 0.66135806}
+    radius: 0.00017151574
+    height: 0.00068606297
+    position: {x: 0.00007134396, y: 0.00057618145, z: 0.000054698055}
+    rotation: {x: 0.019134061, y: 0, z: -0.7498261, w: 0.66135824}
   collider_fingerIndexL:
     isMirrored: 1
     state: 0
     transform: {fileID: 732679691}
-    radius: 0.00011172014
-    height: 0.0005586007
+    radius: 0.00011172035
+    height: 0.00055860175
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 1}
   collider_fingerMiddleL:
@@ -1298,8 +1408,8 @@ MonoBehaviour:
     isMirrored: 1
     state: 0
     transform: {fileID: 732679688}
-    radius: 0.00011172014
-    height: 0.0005586007
+    radius: 0.00011172035
+    height: 0.00055860175
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 1}
   collider_fingerMiddleR:
@@ -1721,6 +1831,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 902978311734085834, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
     type: 3}
   m_PrefabInstance: {fileID: 732679684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &852039025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142123814
 GameObject:
