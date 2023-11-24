@@ -348,169 +348,22 @@ MonoBehaviour:
   bonesAsSpheres: 0
 --- !u!4 &143414468 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 902978311734085834, guid: e97024aaab3ed9646b60b75b36f64c5e,
+  m_CorrespondingSourceObject: {fileID: -8599145217348693341, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &143414469 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4586039736421774195, guid: e97024aaab3ed9646b60b75b36f64c5e,
+--- !u!4 &143414469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2685444665046458348, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &143414470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &143414470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4755771662704806740, guid: e97024aaab3ed9646b60b75b36f64c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143414469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1661641543, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foldout_transforms: 1
-  foldout_forces: 1
-  foldout_collision: 1
-  foldout_stretchsquish: 1
-  foldout_limits: 1
-  foldout_grabpose: 1
-  foldout_options: 1
-  foldout_gizmos: 0
-  version: 1
-  integrationType: 0
-  rootTransform: {fileID: 143414468}
-  ignoreTransforms: []
-  endpointPosition: {x: 0, y: 0, z: 0}
-  multiChildType: 0
-  pull: 0.2
-  pullCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spring: 0.2
-  springCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  stiffness: 0.2
-  stiffnessCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  gravity: 0
-  gravityCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  gravityFalloff: 0
-  gravityFalloffCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  immobileType: 0
-  immobile: 0
-  immobileCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  allowCollision: 1
-  collisionFilter:
-    allowSelf: 1
-    allowOthers: 1
-  radius: 0.1
-  radiusCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  colliders:
-  - {fileID: 732679706}
-  limitType: 0
-  maxAngleX: 45
-  maxAngleXCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  maxAngleZ: 45
-  maxAngleZCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  limitRotation: {x: 0, y: 0, z: 0}
-  limitRotationXCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  limitRotationYCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  limitRotationZCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  allowGrabbing: 1
-  grabFilter:
-    allowSelf: 1
-    allowOthers: 1
-  allowPosing: 1
-  poseFilter:
-    allowSelf: 1
-    allowOthers: 1
-  snapToHand: 0
-  grabMovement: 0.5
-  maxStretch: 0
-  maxStretchCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  maxSquish: 0
-  maxSquishCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  stretchMotion: 0
-  stretchMotionCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  isAnimated: 0
-  resetWhenDisabled: 0
-  parameter: 
-  showGizmos: 1
-  boneOpacity: 0.5
-  limitOpacity: 0.5
 --- !u!114 &143414471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,85 +384,73 @@ MonoBehaviour:
   fallbackStatus: 0
 --- !u!4 &143414472 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &143414474 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &143414475 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8599145217348693341, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &143414476 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2685444665046458348, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &143414477 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4755771662704806740, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &143414478 stripped
-Transform:
   m_CorrespondingSourceObject: {fileID: -5107039526134541469, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414479 stripped
+--- !u!4 &143414473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8131273928909103058, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414480 stripped
+--- !u!4 &143414474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3171024994918928221, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414481 stripped
+--- !u!4 &143414475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2934706747919928125, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414482 stripped
+--- !u!4 &143414476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3182184046279639225, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414483 stripped
+--- !u!4 &143414477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4716469756820532475, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414484 stripped
+--- !u!4 &143414478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1665071945579507160, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414485 stripped
+--- !u!4 &143414479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1122314837758968419, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &143414486 stripped
+--- !u!4 &143414480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 747969231759637169, guid: e97024aaab3ed9646b60b75b36f64c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 143414465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &143414481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3551960246506442466, guid: e97024aaab3ed9646b60b75b36f64c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 143414465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &143414482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 143414465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &143414483 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: e97024aaab3ed9646b60b75b36f64c5e,
     type: 3}
   m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
@@ -652,7 +493,7 @@ MonoBehaviour:
   lipSyncJawBone: {fileID: 0}
   lipSyncJawClosed: {x: 0, y: 0, z: 0, w: 1}
   lipSyncJawOpen: {x: 0, y: 0, z: 0, w: 1}
-  VisemeSkinnedMesh: {fileID: 143414474}
+  VisemeSkinnedMesh: {fileID: 143414483}
   MouthOpenBlendShapeName: Facial_Blends.Jaw_Down
   VisemeBlendShapes:
   - sil
@@ -683,8 +524,8 @@ MonoBehaviour:
     eyeMovement:
       confidence: 0.5
       excitement: 0.5
-    leftEye: {fileID: 852039025}
-    rightEye: {fileID: 143414472}
+    leftEye: {fileID: 143414482}
+    rightEye: {fileID: 143414481}
     eyesLookingStraight:
       linked: 1
       left: {x: 0, y: 0, z: 0, w: 1}
@@ -746,7 +587,7 @@ MonoBehaviour:
         linked: 1
         left: {x: 0, y: 0, z: 0, w: 0}
         right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsSkinnedMesh: {fileID: 143414474}
+    eyelidsSkinnedMesh: {fileID: 143414483}
     eyelidsBlendshapes: 06000000ffffffffffffffff
   customizeAnimationLayers: 1
   baseAnimationLayers:
@@ -762,10 +603,9 @@ MonoBehaviour:
     isDefault: 1
   - isEnabled: 0
     type: 3
-    animatorController: {fileID: 9100000, guid: edeed007e48514f4795824aa6495f73b,
-      type: 2}
-    mask: {fileID: 31900000, guid: b2b8bad9583e56a46a3e21795e96ad92, type: 2}
-    isDefault: 0
+    animatorController: {fileID: 0}
+    mask: {fileID: 0}
+    isDefault: 1
   - isEnabled: 0
     type: 4
     animatorController: {fileID: 0}
@@ -794,13 +634,23 @@ MonoBehaviour:
     mask: {fileID: 0}
     isDefault: 1
   AnimationPreset: {fileID: 0}
-  animationHashSet: []
+  animationHashSet:
+  - hash: 480265906
+    name: ExpAngry
+  - hash: -1914310460
+    name: ExpNormal
+  - hash: 1653400546
+    name: ExpHappy
+  - hash: 1333257666
+    name: ExpSad
+  - hash: -1225033725
+    name: ExpSurprised
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414486}
+    transform: {fileID: 143414480}
     radius: 0.11245214
     height: 0
     position: {x: 0, y: 0.13103873, z: 0.00000005960466}
@@ -808,7 +658,7 @@ MonoBehaviour:
   collider_torso:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414485}
+    transform: {fileID: 143414479}
     radius: 0.17038202
     height: 0.67887723
     position: {x: 0, y: -0.2003038, z: 0.00000005960465}
@@ -816,7 +666,7 @@ MonoBehaviour:
   collider_footR:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414484}
+    transform: {fileID: 143414478}
     radius: 0.067059875
     height: 0
     position: {x: 0, y: 0, z: 0}
@@ -824,7 +674,7 @@ MonoBehaviour:
   collider_footL:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414483}
+    transform: {fileID: 143414477}
     radius: 0.067059875
     height: 0
     position: {x: 0, y: 0, z: 0}
@@ -832,7 +682,7 @@ MonoBehaviour:
   collider_handR:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414482}
+    transform: {fileID: 143414476}
     radius: 0.01715156
     height: 0.06860624
     position: {x: -0.007134401, y: 0.057618134, z: 0.005469709}
@@ -840,7 +690,7 @@ MonoBehaviour:
   collider_handL:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414481}
+    transform: {fileID: 143414475}
     radius: 0.017151589
     height: 0.068606354
     position: {x: 0.007134401, y: 0.057618234, z: 0.0054696896}
@@ -848,7 +698,7 @@ MonoBehaviour:
   collider_fingerIndexL:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414480}
+    transform: {fileID: 143414474}
     radius: 0.0111720115
     height: 0.055860057
     position: {x: 0, y: 0, z: 0}
@@ -856,7 +706,7 @@ MonoBehaviour:
   collider_fingerMiddleL:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414479}
+    transform: {fileID: 143414473}
     radius: 0.010672907
     height: 0.053364534
     position: {x: 0, y: 0, z: 0}
@@ -864,7 +714,7 @@ MonoBehaviour:
   collider_fingerRingL:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414478}
+    transform: {fileID: 143414472}
     radius: 0.010218147
     height: 0.051090736
     position: {x: 0, y: 0, z: 0}
@@ -880,7 +730,7 @@ MonoBehaviour:
   collider_fingerIndexR:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414477}
+    transform: {fileID: 143414470}
     radius: 0.011171916
     height: 0.05585958
     position: {x: 0, y: 0, z: 0}
@@ -888,7 +738,7 @@ MonoBehaviour:
   collider_fingerMiddleR:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414476}
+    transform: {fileID: 143414469}
     radius: 0.010672859
     height: 0.053364296
     position: {x: 0, y: 0, z: 0}
@@ -896,7 +746,7 @@ MonoBehaviour:
   collider_fingerRingR:
     isMirrored: 1
     state: 0
-    transform: {fileID: 143414475}
+    transform: {fileID: 143414468}
     radius: 0.010218147
     height: 0.051090736
     position: {x: 0, y: 0, z: 0}
@@ -1327,7 +1177,49 @@ MonoBehaviour:
     mask: {fileID: 0}
     isDefault: 1
   AnimationPreset: {fileID: 0}
-  animationHashSet: []
+  animationHashSet:
+  - hash: -1963515926
+    name: Fist
+  - hash: 282634289
+    name: Peace
+  - hash: 935782528
+    name: RockNRoll
+  - hash: 420425210
+    name: Gun
+  - hash: 1949755150
+    name: Thumbs up
+  - hash: 1847183909
+    name: Idle2
+  - hash: -754294324
+    name: Armature|LeftHandOpen
+  - hash: -189046612
+    name: Armature|LeftHandPoint
+  - hash: -998029940
+    name: Peace
+  - hash: 2050206447
+    name: Point
+  - hash: 297357552
+    name: Gun
+  - hash: -1170069608
+    name: Idle2
+  - hash: 1781153929
+    name: Fist
+  - hash: -488267544
+    name: Thumbs up
+  - hash: -1592414362
+    name: RockNRoll
+  - hash: -740417252
+    name: Armature|RightHandOpen
+  - hash: 480265906
+    name: ExpAngry
+  - hash: -1914310460
+    name: ExpNormal
+  - hash: 1653400546
+    name: ExpHappy
+  - hash: 1333257666
+    name: ExpSad
+  - hash: -1225033725
+    name: ExpSurprised
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:
@@ -1837,12 +1729,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 902978311734085834, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
     type: 3}
   m_PrefabInstance: {fileID: 732679684}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &852039025 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1951410641895098583, guid: e97024aaab3ed9646b60b75b36f64c5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 143414465}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142123814
 GameObject:
