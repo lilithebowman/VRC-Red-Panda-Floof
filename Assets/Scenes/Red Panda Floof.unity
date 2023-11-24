@@ -653,7 +653,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 0
+  fallbackStatus: 3
 --- !u!137 &692310369 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
@@ -966,6 +966,56 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.7071069
       objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -3.5527137e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2585338655472771634, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: -2585338655472771634, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -3.5527137e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1951410641895098583, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 150244661840667119, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1113,7 +1163,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 0
+  fallbackStatus: 3
 --- !u!114 &732679699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,29 +1214,29 @@ MonoBehaviour:
     eyeMovement:
       confidence: 0.5
       excitement: 0.5
-    leftEye: {fileID: 732679709}
-    rightEye: {fileID: 732679708}
+    leftEye: {fileID: 732679712}
+    rightEye: {fileID: 732679711}
     eyesLookingStraight:
       linked: 1
       left: {x: 0, y: 0, z: 0, w: 1}
       right: {x: 0, y: 0, z: 0, w: 1}
     eyesLookingUp:
       linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
+      left: {x: -0.08715574, y: 0, z: 0, w: 0.9961947}
+      right: {x: -0.08715574, y: 0, z: 0, w: 0.9961947}
     eyesLookingDown:
       linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
+      left: {x: 0.08715569, y: 0, z: 0, w: 0.9961947}
+      right: {x: 0.08715569, y: 0, z: 0, w: 0.9961947}
     eyesLookingLeft:
       linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
+      left: {x: 0, y: -0.08715574, z: 0, w: 0.9961947}
+      right: {x: 0, y: -0.08715574, z: 0, w: 0.9961947}
     eyesLookingRight:
       linked: 1
-      left: {x: 0, y: 0, z: 0, w: 1}
-      right: {x: 0, y: 0, z: 0, w: 1}
-    eyelidType: 0
+      left: {x: 0, y: 0.08715569, z: 0, w: 0.9961947}
+      right: {x: 0, y: 0.08715569, z: 0, w: 0.9961947}
+    eyelidType: 2
     upperLeftEyelid: {fileID: 0}
     upperRightEyelid: {fileID: 0}
     lowerLeftEyelid: {fileID: 0}
@@ -1227,8 +1277,8 @@ MonoBehaviour:
         linked: 1
         left: {x: 0, y: 0, z: 0, w: 0}
         right: {x: 0, y: 0, z: 0, w: 0}
-    eyelidsSkinnedMesh: {fileID: 0}
-    eyelidsBlendshapes: 
+    eyelidsSkinnedMesh: {fileID: 712670191}
+    eyelidsBlendshapes: 06000000ffffffffffffffff
   customizeAnimationLayers: 1
   baseAnimationLayers:
   - isEnabled: 0
@@ -1687,7 +1737,7 @@ MonoBehaviour:
   collisionFilter:
     allowSelf: 1
     allowOthers: 1
-  radius: 0
+  radius: 0.0005
   radiusCurve:
     serializedVersion: 2
     m_Curve: []
@@ -1789,18 +1839,6 @@ MonoBehaviour:
 --- !u!1 &732679707 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3646755201719406309, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
-    type: 3}
-  m_PrefabInstance: {fileID: 732679684}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &732679708 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5017276502627805711, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
-    type: 3}
-  m_PrefabInstance: {fileID: 732679684}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &732679709 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7764252877082318204, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
     type: 3}
   m_PrefabInstance: {fileID: 732679684}
   m_PrefabAsset: {fileID: 0}
