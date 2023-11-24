@@ -238,6 +238,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedPandaBigTailQuest
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d08db6adaedcb64eb6c6d58b9d044cd, type: 3}
 --- !u!1 &692310354 stripped
@@ -653,7 +658,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 3
+  fallbackStatus: 0
 --- !u!137 &692310369 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
