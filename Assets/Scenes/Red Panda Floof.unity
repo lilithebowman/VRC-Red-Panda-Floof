@@ -1575,7 +1575,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   colliders:
   - {fileID: 732679706}
-  - {fileID: 732679710}
+  - {fileID: 889309189}
   limitType: 0
   maxAngleX: 45
   maxAngleXCurve:
@@ -1618,23 +1618,23 @@ MonoBehaviour:
   poseFilter:
     allowSelf: 1
     allowOthers: 1
-  snapToHand: 0
-  grabMovement: 0.5
-  maxStretch: 0
+  snapToHand: 1
+  grabMovement: 1
+  maxStretch: 1000
   maxStretchCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxSquish: 0
+  maxSquish: 1
   maxSquishCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  stretchMotion: 0
+  stretchMotion: 1
   stretchMotionCurve:
     serializedVersion: 2
     m_Curve: []
@@ -1841,32 +1841,6 @@ MonoBehaviour:
   position: {x: 0, y: -0.25, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   bonesAsSpheres: 0
---- !u!1 &732679707 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3646755201719406309, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
-    type: 3}
-  m_PrefabInstance: {fileID: 732679684}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &732679710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732679707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1631200402, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rootTransform: {fileID: 0}
-  shapeType: 2
-  insideBounds: 1
-  radius: 0.0015
-  height: 0.005
-  position: {x: 0, y: -0.001, z: 0.001}
-  rotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  bonesAsSpheres: 0
 --- !u!4 &732679711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
@@ -1885,6 +1859,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 732679684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &889309187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 827075974287967996, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 732679684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &889309189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889309187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631200402, guid: 2a2c05204084d904aa4945ccff20d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootTransform: {fileID: 0}
+  shapeType: 1
+  insideBounds: 0
+  radius: 0.001
+  height: 0.005
+  position: {x: 0, y: 0.0015, z: 0.001}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  bonesAsSpheres: 0
 --- !u!1 &1142123814
 GameObject:
   m_ObjectHideFlags: 0
