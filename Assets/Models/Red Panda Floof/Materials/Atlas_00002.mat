@@ -69,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FurShapeMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 235e28cb28160fa4d82c7f7badc59c03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FurShapeMask1:
@@ -89,11 +89,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1bfc81d93f9d4d54abf4c30db15148ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairMapCoarse:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 180da82f454642a4c8071eccbca7d734, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -164,7 +164,7 @@ Material:
     - _BodyShrinkOffset: 0
     - _BumpScale: 1
     - _CellStretch: 0
-    - _CoarseMapActive: 0
+    - _CoarseMapActive: 1
     - _ConfirmPipeline: 0
     - _Contrast: 3
     - _Cull: 2
@@ -294,7 +294,7 @@ Material:
     - _FurMarkingsActive: 0
     - _FurMinHeight: 0.01
     - _FurShadowCastSize: 0.35
-    - _FurShapeGroup: 0
+    - _FurShapeGroup: 1
     - _FurShapeMask1Bits: 0
     - _FurShapeMask2Bits: 0
     - _FurShapeMask3Bits: 0
@@ -374,7 +374,7 @@ Material:
     - _HairTipPoint: 0.85
     - _HairTransparency: 0.35
     - _HairsColourGroup: 0
-    - _HairsGroup: 0
+    - _HairsGroup: 1
     - _HideSeams: 0
     - _InhibitorHormoneAdditionalRadius: 3
     - _InhibitorStrength: 0.3
@@ -423,7 +423,7 @@ Material:
     - _ProximityOcclusionRange: 0.2
     - _QualityGroup: 0
     - _RenderPipeline: 1
-    - _ScaleCalibration: 0.0010000003
+    - _ScaleCalibration: 0.00012500004
     - _SelectedUV: 0
     - _SmoothnessTextureChannel: 0
     - _SoftenBrightness: 0.5
