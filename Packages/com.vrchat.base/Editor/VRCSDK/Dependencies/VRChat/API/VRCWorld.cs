@@ -26,7 +26,7 @@ namespace VRC.SDKBase.Editor.Api
         public int RecommendedCapacity { get; set; }
         public int Favorites { get; set; }
         public int Visits { get; set; }
-        public int Popularity { get; set; }
+        // public int Popularity { get; set; } // this field doesn't deserialize correctly for VERY popular worlds, ignoring in SDK for now
         public int Heat { get; set; }
         public int Occupants { get; set; }
         public int PublicOccupants { get; set; }

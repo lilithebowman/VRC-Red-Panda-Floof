@@ -88,38 +88,53 @@ namespace VRC.SDKBase.Editor.Api
         internal static async Task IncreaseSendBuffer(Uri targetUrl, Task sendRequest,
             CancellationToken cancellationToken)
         {
-            var servicePointGroups = typeof(ServicePoint).GetField("groups", BindingFlags.NonPublic | BindingFlags.Instance);
+            var servicePointScheduler = typeof(ServicePoint).GetProperty("Scheduler", BindingFlags.NonPublic | BindingFlags.Instance);
+            var servicePointGroups = servicePointScheduler?.PropertyType.GetField("groups", BindingFlags.NonPublic | BindingFlags.Instance);
             var groupsList = servicePointGroups?.FieldType.GetProperty("Values");
             
             var connectionStateType = servicePointGroups?.FieldType.GenericTypeArguments[1];
             var connectionsList = connectionStateType?.GetField("connections", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            var connectionListStateType = connectionsList?.FieldType.GenericTypeArguments[0];
-            var connection = connectionListStateType?.GetProperty("Connection");
-            var socket = connection?.PropertyType.GetField("socket", BindingFlags.NonPublic | BindingFlags.Instance);
+            var connection = connectionsList?.FieldType.GenericTypeArguments[0];
+            var socket = connection?.GetField("socket", BindingFlags.NonPublic | BindingFlags.Instance);
             
             while (!sendRequest.IsCompleted && !cancellationToken.IsCancellationRequested)
             {
                 await Task.Delay(250, cancellationToken);
                 
                 var servicePoint = ServicePointManager.FindServicePoint(targetUrl);
-                var groups = (IEnumerable)groupsList?.GetValue(servicePointGroups.GetValue(servicePoint));
+                var scheduler = servicePointScheduler?.GetValue(servicePoint);
+                if (scheduler == null)
+                {
+                    continue;
+                }
+                var groups = (IEnumerable)groupsList?.GetValue(servicePointGroups.GetValue(scheduler));
 
                 // we're going to retry finding the active service point
-                if (groups == null) continue;
+                if (groups == null)
+                {
+                    continue;
+                }
 
                 foreach (var group in groups)
                 {
                     var connections = (IEnumerable) connectionsList?.GetValue(group);
-                    if (connections == null) continue;
-                    foreach (var connectionState in connections)
+                    if (connections == null)
                     {
-                        var webConnection = connection?.GetValue(connectionState);
-                        if (webConnection == null) continue;
+                        continue;
+                    }
+                    
+                    foreach (var webConnection in connections)
+                    {
+                        if (webConnection == null)
+                        {
+                            continue;
+                        }
                         var socketInstance = (Socket) socket?.GetValue(webConnection);
                         if (socketInstance != null && socketInstance.Connected && socketInstance.SendBufferSize < 4 * 1024 * 1024)
                         {
                             socketInstance.SendBufferSize = 4 * 1024 * 1024;
+                            return;
                         }
                     }
                 }

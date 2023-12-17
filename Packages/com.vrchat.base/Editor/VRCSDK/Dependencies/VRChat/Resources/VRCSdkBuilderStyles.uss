@@ -25,6 +25,7 @@
 #save-changes-block {
     height: 0;
     overflow: hidden;
+    align-items: stretch;
 }
 
 #save-changes-button {

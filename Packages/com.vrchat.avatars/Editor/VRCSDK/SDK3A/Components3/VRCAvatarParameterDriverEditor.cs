@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEditor;
 using VRC.SDK3.Avatars.Components;
 using static VRC.SDKBase.VRC_AvatarParameterDriver;
-using Boo.Lang;
 using System;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(VRCAvatarParameterDriver))]
 public class AvatarParameterDriverEditor : Editor

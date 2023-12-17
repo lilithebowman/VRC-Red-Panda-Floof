@@ -592,11 +592,6 @@ namespace VRC.SDKBase
             return typeof(VRCSdkControlPanel).GetMethod("SetPanelUploading", BindingFlags.Instance | BindingFlags.NonPublic);
         }
 
-        internal static MethodInfo GetClearClientMethod()
-        {
-            return typeof(VRCApi).GetMethod("ClearClient", BindingFlags.NonPublic | BindingFlags.Static);
-        }
-
         internal static void ToggleSdkTabsEnabled(VRCSdkControlPanel panel, bool value)
         {
             var tabsProp =

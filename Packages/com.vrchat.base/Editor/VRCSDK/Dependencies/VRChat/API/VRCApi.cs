@@ -72,6 +72,10 @@ namespace VRC.SDKBase.Editor.Api {
         private static CookieContainer GetCookies(Uri url)
         {
             if (url.Host != VRC_COOKIE_BASE_URL.Host) return new CookieContainer();
+            if (!ApiCredentials.IsLoaded())
+            {
+                ApiCredentials.Load();
+            }
             var authCookie = ApiCredentials.GetAuthTokenCookie();
             var twoFa = ApiCredentials.GetTwoFactorAuthTokenCookie();
             var cookies = new CookieContainer();
@@ -87,38 +91,24 @@ namespace VRC.SDKBase.Editor.Api {
             return cookies;
 
         }
-
-        private static HttpClient _client;
-
+        
         private static HttpClient GetClient(Uri url)
         {
             {
-                if (_client != null) return _client;
                 var cookies = GetCookies(url);
                 var handler = new HttpClientHandler
                 {
                     CookieContainer = cookies,
-                    UseProxy = false,
+                    UseProxy = false
                 };
                 var client = new HttpClient(handler);
                 foreach (var header in Headers)
                 {
                     client.DefaultRequestHeaders.Add(header.Key, header.Value);
                 }
-
-                // Only saved authorized clients
-                if (cookies.Count > 0)
-                {
-                    _client = client;
-                }
+                
                 return client;
             }
-        }
-
-        [UsedImplicitly]
-        internal static void ClearClient()
-        {
-            _client = null;
         }
 
         private static void SetApiUrl()
@@ -127,7 +117,6 @@ namespace VRC.SDKBase.Editor.Api {
             var apiUrl = API.GetApiUrlForEnvironment(VRCSdkControlPanel.ApiEnvironment);
             VRC_BASE_URL = new Uri(apiUrl);
             VRC_COOKIE_BASE_URL = new Uri($"{VRC_BASE_URL.Scheme}://{VRC_BASE_URL.Host}");
-
         }
 
         private static async Task<Uri> BuildUrl(string requestUrl, Dictionary<string, string> queryParams = null)
@@ -150,7 +139,7 @@ namespace VRC.SDKBase.Editor.Api {
             return uri.Uri;
         }
         
-        private class EmptyResponse {};
+        private class EmptyResponse {}
         
         #endregion
 
@@ -170,10 +159,6 @@ namespace VRC.SDKBase.Editor.Api {
         {
             SetApiUrl();
             var uri = await BuildUrl(requestUrl, queryParams);
-            if (uri.Host != VRC_BASE_URL.Host)
-            {
-                _client = null;
-            }
             var cachedResponse = VRCApiCache.Get<TResponse>(uri.ToString(), out var isCached);
             if (method == HttpMethod.Get)
             {
@@ -293,8 +278,13 @@ namespace VRC.SDKBase.Editor.Api {
                     {
                         throw new ApiErrorException(result, await result.Content.ReadAsStringAsync());
                     }
-                    catch (ApiErrorException)
+                    catch (ApiErrorException ex)
                     {
+                        // Provide an actionable error message
+                        if (ex.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            Core.Logger.LogError("Unauthorized, try logging out and in again");
+                        }
                         throw;
                     }
                     catch
@@ -433,7 +423,7 @@ namespace VRC.SDKBase.Editor.Api {
         [PublicAPI]
         public static async Task<VRCWorld> UpdateWorldInfo(string id, VRCWorld data, CancellationToken cancellationToken = default)
         {
-            var changes = new VRCWorldChanges()
+            var changes = new VRCWorldChanges
             {
                 Name = data.Name,
                 Description = data.Description,
@@ -442,7 +432,7 @@ namespace VRC.SDKBase.Editor.Api {
                 RecommendedCapacity = data.RecommendedCapacity,
                 PreviewYoutubeId = data.PreviewYoutubeId
             };
-            return await VRCApi.Put<VRCWorldChanges, VRCWorld>($"worlds/{id}", changes, cancellationToken: cancellationToken);
+            return await Put<VRCWorldChanges, VRCWorld>($"worlds/{id}", changes, cancellationToken: cancellationToken);
         }
 
         public static async Task<bool> GetCanPublishWorld(string id, CancellationToken cancellationToken = default)
@@ -477,7 +467,7 @@ namespace VRC.SDKBase.Editor.Api {
             {
                 {"imageUrl", newImageUrl}
             };
-            return await VRCApi.Put<object, VRCWorld>($"worlds/{id}", imageUpdateRequest, cancellationToken: cancellationToken);
+            return await Put<object, VRCWorld>($"worlds/{id}", imageUpdateRequest, cancellationToken: cancellationToken);
         }
         
         [PublicAPI]
@@ -516,7 +506,7 @@ namespace VRC.SDKBase.Editor.Api {
                 {"assetUrl", newBundleUrl},
                 {"platform", Tools.Platform.ToString()},
                 {"unityVersion", Tools.UnityVersion.ToString()},
-                {"assetVersion", 1}
+                {"assetVersion", 4}
             };
             Core.Logger.Log($"Updating with new bundle {newBundleUrl}", DebugLevel.API);
             await VRCApi.Put<object, VRCWorld>($"worlds/{id}", bundleUpdateRequest, cancellationToken: cancellationToken);
@@ -568,7 +558,7 @@ namespace VRC.SDKBase.Editor.Api {
                 {"capacity", data.Capacity},
                 {"recommendedCapacity", data.RecommendedCapacity},
                 {"previewYoutubeId", data.PreviewYoutubeId},
-                {"assetVersion", 1}
+                {"assetVersion", 4}
             };
             var createdWorld = await Post<Dictionary<string, object>, VRCWorld>($"worlds", newWorldData, cancellationToken: cancellationToken);
             Core.Logger.Log("Created a new World");
@@ -1051,8 +1041,9 @@ namespace VRC.SDKBase.Editor.Api {
             
             Core.Logger.Log("Everything should be good now", DebugLevel.API);
 
-            await VRCTools.CleanupTempFiles(fileId);
-            
+            onProgress?.Invoke($"Cleaning up Temp Files...", 0.99f);
+            await VRCTools.CleanupTempFiles(currentFile.ID);
+
             currentFile = await Get<VRCFile>($"file/{currentFile.ID}", forceRefresh: true, cancellationToken: cancellationToken);
             
             onProgress?.Invoke("File upload finished", 1.0f);

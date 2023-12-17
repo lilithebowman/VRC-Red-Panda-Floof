@@ -1,5 +1,9 @@
 ﻿<UXML xmlns="UnityEngine.UIElements">
     <VisualElement class="col relative flex-grow-1 w-100 justify-content-between">
+        <VisualElement name="save-changes-block" class="row align-items-center buttons-row d-none">
+            <Button name="save-changes-button" class="first flex-grow-1 bg-subheader hover-opacity-80" text="Save Changes" />
+            <Button name="discard-changes-button" class="last bg-red-dark hover-opacity-80" text="Discard" />
+        </VisualElement>
         <ScrollView>
             <VisualElement name="info-section" class="col">
                 <VisualElement class="col flex-shrink-0" name="content-info-block" />

@@ -14,6 +14,7 @@ namespace VRC.SDKBase.Editor.Api
         public string Platform { get; set; }
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
+        public string Variant { get; set; }
     }
 }
 

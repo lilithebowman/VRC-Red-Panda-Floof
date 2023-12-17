@@ -7,6 +7,12 @@ namespace VRC.SDKBase.Editor.Api
 {
     public struct VRCAvatar: IVRCContent
     {
+        public enum AvatarVariant
+        {
+            Standard,
+            Impostor
+        }
+        
         [JsonProperty("id")]
         public string ID { get; set; }
         public string Name { get; set; }
@@ -38,9 +44,17 @@ namespace VRC.SDKBase.Editor.Api
             string assetUrl = null;
             var preferredUnityVersion = new UnityVersion();
             if (this.UnityPackages == null) return null;
+            
             foreach (var unityPackage in this.UnityPackages)
             {
                 if (UnityVersion.Parse(unityPackage.UnityVersion).CompareTo(preferredUnityVersion) < 0) continue;
+
+                if (unityPackage.Variant != null)
+                {
+                    AvatarVariant variant = (AvatarVariant)Enum.Parse(typeof(AvatarVariant), unityPackage.Variant, true);
+                    if (variant == AvatarVariant.Impostor) continue;
+                }
+
                 if (unityPackage.Platform != platform) continue;
                 assetUrl = unityPackage.AssetUrl;
                 preferredUnityVersion = UnityVersion.Parse(unityPackage.UnityVersion);

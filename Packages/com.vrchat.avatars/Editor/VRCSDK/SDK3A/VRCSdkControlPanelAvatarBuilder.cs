@@ -1,6 +1,7 @@
 ﻿#if !VRC_CLIENT
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -212,18 +213,16 @@ namespace VRC.SDK3A.Editor
                 _builder.OnGUIError(avatar, "This avatar uses Visemes but the Face Mesh is not specified.",
                     delegate { Selection.activeObject = avatar.gameObject; }, null);
 
-            if (ShaderKeywordsUtility.DetectCustomShaderKeywords(avatar))
-                _builder.OnGUIWarning(avatar,
-                    "A Material on this avatar has custom shader keywords. Please consider optimizing it using the Shader Keywords Utility.",
-                    () => { Selection.activeObject = avatar.gameObject; },
-                    () =>
-                    {
-                        EditorApplication.ExecuteMenuItem("VRChat SDK/Utilities/Avatar Shader Keywords Utility");
-                    });
-
             VerifyAvatarMipMapStreaming(avatar);
+            VerifyMaxTextureSize(avatar);
 
-            Animator anim = avatar.GetComponent<Animator>();
+            if (!avatar.TryGetComponent<Animator>(out var anim))
+            {
+                _builder.OnGUIError(avatar,
+                    "This avatar does not contain an Animator, you need to add an Animator component for the avatar to work",
+                    delegate { Selection.activeObject = avatar.gameObject; }, null);
+                return;
+            }
             if (anim == null)
             {
                 _builder.OnGUIWarning(avatar,
@@ -949,7 +948,7 @@ namespace VRC.SDK3A.Editor
                 _saveChangesBlock.EnableInClassList("d-none", !isDirty);
                 if (isDirty && !alreadyDirty)
                 {
-                    _saveChangesBlock.experimental.animation.Start(new Vector2(_visualRoot.layout.width, 0), new Vector2(_visualRoot.layout.width, 20), 250, (element, vector2) =>
+                    _saveChangesBlock.experimental.animation.Start(new Vector2(_visualRoot.layout.width, 0), new Vector2(_visualRoot.layout.width, 30), 250, (element, vector2) =>
                     {
                         element.style.height = vector2.y;
                     });
@@ -1154,9 +1153,9 @@ namespace VRC.SDK3A.Editor
             _infoFoldout = root.Q<Foldout>("info-foldout");
             _thumbnailFoldout = root.Q<ThumbnailFoldout>();
             _thumbnail = _thumbnailFoldout.Thumbnail;
-            _saveChangesBlock = root.Q("save-changes-block");
-            _saveChangesButton = root.Q<Button>("save-changes-button");
-            _discardChangesButton = root.Q<Button>("discard-changes-button");
+            _saveChangesBlock = root.panel.visualTree.Q("save-changes-block");
+            _saveChangesButton = _saveChangesBlock.Q<Button>("save-changes-button");
+            _discardChangesButton = _saveChangesBlock.Q<Button>("discard-changes-button");
             _newAvatarBlock = root.Q("new-avatar-block");
             _creationChecklist = root.Q<Checklist>("new-avatar-checklist");
             _fallbackInfo = root.Q<VisualElement>("fallback-avatar-info");
@@ -1386,7 +1385,7 @@ namespace VRC.SDK3A.Editor
                 _descriptionField.value = _avatarData.Description;
                 _visibilityPopup.value = _avatarData.ReleaseStatus;
                 
-                _lastUpdatedLabel.text = (_avatarData.UpdatedAt != DateTime.MinValue) ? _avatarData.UpdatedAt.ToString() : _avatarData.CreatedAt.ToString();
+                _lastUpdatedLabel.text = (_avatarData.UpdatedAt != DateTime.MinValue ? _avatarData.UpdatedAt : _avatarData.CreatedAt).ToLocalTime().ToString(CultureInfo.CurrentCulture);
                 _lastUpdatedLabel.parent.RemoveFromClassList("d-none");
                 
                 _versionLabel.text = _avatarData.Version.ToString();
@@ -1993,7 +1992,14 @@ namespace VRC.SDK3A.Editor
                     return;
                 }
 
-                validationTask.SetResult(null);
+                try
+                {
+                    validationTask.SetResult(null);
+                }
+                catch (Exception)
+                {
+                    // this happens if the task is already completed, probably ok to ignore.
+                }
             });
             VRC_SdkBuilder.RegisterBuildErrorCallback((sender, error) =>
             {
@@ -2503,6 +2509,32 @@ namespace VRC.SDK3A.Editor
                         Undo.RecordObject(t, "Set Mip Map Streaming");
                         t.streamingMipmaps = true;
                         t.streamingMipmapsPriority = 0;
+                        EditorUtility.SetDirty(t);
+                        paths.Add(t.assetPath);
+                    }
+
+                    AssetDatabase.ForceReserializeAssets(paths);
+                    AssetDatabase.Refresh();
+                });
+        }
+        
+        private void VerifyMaxTextureSize(Component avatar)
+        {
+            var renderers = avatar.gameObject.GetComponentsInChildrenExcludingEditorOnly<Renderer>(true);
+            List<TextureImporter> badTextureImporters = VRCSdkControlPanel.GetOversizeTextureImporters(renderers);
+
+            if (badTextureImporters.Count == 0)
+                return;
+
+            _builder.OnGUIError(avatar, $"This avatar has textures bigger than {VRCSdkControlPanel.MAX_SDK_TEXTURE_SIZE}. Please reduce them to save memory for users.",
+                null,
+                () =>
+                {
+                    List<string> paths = new List<string>();
+                    foreach (TextureImporter t in badTextureImporters)
+                    {
+                        Undo.RecordObject(t, $"Set Max Texture Size to {VRCSdkControlPanel.MAX_SDK_TEXTURE_SIZE}");
+                        t.maxTextureSize = VRCSdkControlPanel.MAX_SDK_TEXTURE_SIZE;
                         EditorUtility.SetDirty(t);
                         paths.Add(t.assetPath);
                     }
