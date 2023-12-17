@@ -228,3 +228,48 @@ Received Import Request.
 Start importing Assets/Models/Red Panda Floof/Blender/RedPandaBigTailQuest.blend using Guid(e97024aaab3ed9646b60b75b36f64c5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0768f25ebb61a72f411c4518b4164731') in 0.118034 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 187
+========================================================================
+Received Import Request.
+  Time since last request: 3283.450715 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Atlas_00002.mat
+  artifactKey: Guid(734100110af0f6d418e2a08535f1d7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Atlas_00002.mat using Guid(734100110af0f6d418e2a08535f1d7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed55e2988182e1cebd0f0b6dc4f74f8c') in 0.016164 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.001543 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Color3.mat
+  artifactKey: Guid(d55bbf37433d65045886a44a3b106914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Color3.mat using Guid(d55bbf37433d65045886a44a3b106914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0810995bc1bfba0b817c5b10c44f543') in 0.463776 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 30.413786 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Color1.mat
+  artifactKey: Guid(54cd02e3deaad1c4bb68a1a0eeae1bc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Color1.mat using Guid(54cd02e3deaad1c4bb68a1a0eeae1bc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc87887fe78d1b21424b45a0fdd2e842') in 0.020009 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 2.360701 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Atlas_00001.mat
+  artifactKey: Guid(aae94340727ba5f41b8899b0cdd9cb09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Atlas_00001.mat using Guid(aae94340727ba5f41b8899b0cdd9cb09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87e45fa2ffdb26ceea08973196a2bf4e') in 2.592729 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 5.038154 seconds.
+  path: Assets/FastFur_Atlas_00002_HairMapCoarse.png
+  artifactKey: Guid(180da82f454642a4c8071eccbca7d734) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FastFur_Atlas_00002_HairMapCoarse.png using Guid(180da82f454642a4c8071eccbca7d734) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '115326a19286cd7f81156386e6e1b431') in 0.020106 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
