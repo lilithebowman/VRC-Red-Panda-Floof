@@ -244,3 +244,35 @@ Received Import Request.
 Start importing Assets/Models/Red Panda Floof/Textures/Atlas/Desktop/Atlas_00002.png using Guid(59a01cbc139f7aa4c8e583007ea24b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f729382cbfcf40e3b98a91b3a7a04156') in 0.009062 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 227.021288 seconds.
+  path: Assets/RedPanda/Materials/Standard/Color1Mat.mat
+  artifactKey: Guid(091ea0eadc412e54a97685271c6d96f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RedPanda/Materials/Standard/Color1Mat.mat using Guid(091ea0eadc412e54a97685271c6d96f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79151c32cf5659c3bf709bf145111b05') in 0.767283 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.363249 seconds.
+  path: Assets/RedPanda/Materials/Standard/Color2Mat.mat
+  artifactKey: Guid(219de8d5a53d6914388675bbeb27592a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RedPanda/Materials/Standard/Color2Mat.mat using Guid(219de8d5a53d6914388675bbeb27592a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '737e56ce15981b3cf0f851e9ba94d6e8') in 0.093363 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.543472 seconds.
+  path: Assets/RedPanda/Materials/Customizable/Color4CustomMat.mat
+  artifactKey: Guid(0fcedfce95a133e42ad0d6d251cb9817) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RedPanda/Materials/Customizable/Color4CustomMat.mat using Guid(0fcedfce95a133e42ad0d6d251cb9817) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af115fb06cdb2f1470015edefa098ea2') in 0.871871 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.669218 seconds.
+  path: Assets/_PoiyomiShaders/Examples/Random/M_Poiyomi_Slime.mat
+  artifactKey: Guid(13dd248373e5f8f4f8c0b1143481373d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_PoiyomiShaders/Examples/Random/M_Poiyomi_Slime.mat using Guid(13dd248373e5f8f4f8c0b1143481373d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '764eaf2e33ce3a7f16414ca869e7d1b6') in 0.030643 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
