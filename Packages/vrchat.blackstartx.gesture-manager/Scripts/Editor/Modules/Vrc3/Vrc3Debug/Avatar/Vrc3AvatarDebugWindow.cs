@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BlackStartX.GestureManager.Editor.Data;
-using BlackStartX.GestureManager.Editor.Lib;
+using BlackStartX.GestureManager.Editor.Library;
 using BlackStartX.GestureManager.Editor.Modules.Vrc3.Params;
 using UnityEditor;
 using UnityEngine;
@@ -18,6 +18,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
         private Vector2 _scroll;
 
         private static Color Color => EditorGUIUtility.isProSkin ? Color.magenta : Color.cyan;
+        private static readonly GUIStyle Style = new(EditorStyles.label) { fontSize = 10, alignment = TextAnchor.MiddleCenter };
 
         internal static Vrc3AvatarDebugWindow Create(ModuleVrc3 source)
         {
@@ -73,7 +74,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
                         TrackingControlLayout(width, data, module.TrackingControls, module.LocomotionDisabled, module.PoseSpace);
                         break;
                     case 2:
-                        AnimatorsLayout(width, data);
+                        AnimatorsLayout(width, data, module.AnimationHashSet);
                         break;
                 }
             }
@@ -85,7 +86,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
                 {
                     ParametersLayout(module, width);
                     TrackingControlLayout(width, data, module.TrackingControls, module.LocomotionDisabled, module.PoseSpace);
-                    AnimatorsLayout(width, data);
+                    AnimatorsLayout(width, data, module.AnimationHashSet);
                 }
             }
 
@@ -103,50 +104,68 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
 
             private static void ParametersLayout(ModuleVrc3 module, float width)
             {
-                var widthOption = GUILayout.Width(width);
-                var innerOption = GUILayout.Width(width / 3);
+                var wOption = GUILayout.Width(width);
+                var iOption = GUILayout.Width(width / 3);
 
                 using (new GUILayout.VerticalScope())
                 {
-                    GUILayout.Label("Parameters", GestureManagerStyles.GuiHandTitle, widthOption);
+                    GUILayout.Label("Parameters", GestureManagerStyles.GuiHandTitle, wOption);
                     module.ParamFilterSearch();
                     GUILayout.Space(5);
-                    using (new GUILayout.HorizontalScope(widthOption))
+                    using (new GUILayout.HorizontalScope(wOption))
                     {
-                        GUILayout.Label("Parameter", GestureManagerStyles.GuiDebugTitle, innerOption);
-                        GUILayout.Label("Type", GestureManagerStyles.GuiDebugTitle, innerOption);
-                        GUILayout.Label("Value", GestureManagerStyles.GuiDebugTitle, innerOption);
+                        GUILayout.Label("Parameter", GestureManagerStyles.GuiDebugTitle, iOption);
+                        GUILayout.Label("Type", GestureManagerStyles.GuiDebugTitle, iOption);
+                        GUILayout.Label("Value", GestureManagerStyles.GuiDebugTitle, iOption);
                     }
 
-                    var color = GUI.backgroundColor;
                     var intTime = Vrc3Param.Time;
-                    foreach (var paramPair in module.FilteredParams)
-                    {
-                        GUILayout.Space(-4);
-                        GUI.backgroundColor = Color.Lerp(Color, color, (intTime - paramPair.Value.LastUpdate) / 100f);
-                        using (new GUILayout.HorizontalScope(GUI.skin.box, widthOption))
-                        {
-                            GUILayout.Label(paramPair.Key, innerOption);
-                            GUILayout.Label(paramPair.Value.TypeText, innerOption);
-                            ParametersLayoutValue(module, paramPair, innerOption);
-                        }
-                    }
-
-                    GUI.backgroundColor = color;
+                    ParametersCategory(module.UserFilteredParams, "[User Parameters]", width, wOption, iOption, intTime, module);
+                    ParametersCategory(module.VrcFilteredParams, "[VRC Defaults]", width, wOption, iOption, intTime, module);
                 }
             }
 
-            private static void ParametersLayoutValue(ModuleVrc3 module, KeyValuePair<string, Vrc3Param> paramPair, GUILayoutOption innerOption)
+            private static void ParametersCategory(Dictionary<string, Vrc3Param> vParams, string title, float width, GUILayoutOption wOption, GUILayoutOption iOption, int intTime, ModuleVrc3 module)
             {
-                if (module.Edit != paramPair.Key)
+                if (vParams.Count <= 0) return;
+                Foldout(title, GUILayout.Width(width + 16), GUILayout.Width(width / 3));
+                foreach (var (kString, param) in vParams) ShowParam(module, intTime, kString, param, wOption, iOption);
+            }
+
+            private static void Foldout(string text, GUILayoutOption wWidth, GUILayoutOption iWidth)
+            {
+                GUILayout.Space(-4);
+                using (new GUILayout.HorizontalScope(GUI.skin.box, wWidth))
                 {
-                    GmgLayoutHelper.GuiLabel(paramPair.Value.LabelTuple(), innerOption);
+                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider, iWidth);
+                    GUILayout.Label(text, Style);
+                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider, iWidth);
+                }
+            }
+
+            private static void ShowParam(ModuleVrc3 module, int intTime, string key, Vrc3Param param, GUILayoutOption wOption, GUILayoutOption iOption)
+            {
+                GUILayout.Space(-4);
+                using (new GmgLayoutHelper.GuiBackground(Color.Lerp(Color, GUI.backgroundColor, (intTime - param.LastUpdate) / 100f)))
+                using (new GUILayout.HorizontalScope(GUI.skin.box, wOption))
+                {
+                    GUILayout.Label(key, iOption);
+                    GUILayout.Label(param.TypeText, iOption);
+                    ParametersLayoutValue(module, key, param, iOption);
+                }
+            }
+
+            private static void ParametersLayoutValue(ModuleVrc3 module, string key, Vrc3Param param, GUILayoutOption iOption)
+            {
+                if (module.Edit != key)
+                {
+                    GmgLayoutHelper.GuiLabel(LabelTuple(param), iOption);
                     var rect = GUILayoutUtility.GetLastRect();
                     rect.x += rect.width - 20;
                     rect.width = 15;
-                    if (GUI.Toggle(rect, false, "")) module.Edit = paramPair.Key;
+                    if (GUI.Toggle(rect, false, "")) module.Edit = key;
                 }
-                else paramPair.Value.FieldTuple(module, innerOption);
+                else FieldTuple(param, module, iOption);
             }
 
             private static void TrackingControlLayout(float width, Dictionary<VRCAvatarDescriptor.AnimLayerType, ModuleVrc3.LayerData> data, Dictionary<string, VRC_AnimatorTrackingControl.TrackingType> trackingControls, bool locomotionDisabled, bool poseSpace)
@@ -206,7 +225,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
                 }
             }
 
-            private static void AnimatorsLayout(float width, IReadOnlyDictionary<VRCAvatarDescriptor.AnimLayerType, ModuleVrc3.LayerData> data)
+            private static void AnimatorsLayout(float width, IReadOnlyDictionary<VRCAvatarDescriptor.AnimLayerType, ModuleVrc3.LayerData> data, IReadOnlyDictionary<int, VRCAvatarDescriptor.DebugHash> debugDic)
             {
                 var widthOption = GUILayout.Width(width);
                 var innerOption = GUILayout.Width(width / 3);
@@ -237,25 +256,48 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Vrc3Debug.Avatar
                             using (new GUILayout.VerticalScope())
                             {
                                 GUILayout.Label("State", GestureManagerStyles.Centered, innerOption);
-                                foreach (var infos in layerList.Select(intLayer => animator.GetCurrentAnimatorClipInfo(intLayer)))
-                                    GUILayout.Label(infos.Length == 0 ? "[UNKNOWN]" : infos[0].clip.name, innerOption);
+                                foreach (var state in layerList.Select(intLayer => animator.GetCurrentAnimatorStateInfo(intLayer)))
+                                    GUILayout.Label(debugDic.TryGetValue(state.fullPathHash, out var hash) ? hash.name : "[UNKNOWN]");
                             }
                         }
                     }
                 }
             }
 
-            private static (Color? color, string text) TrackingTuple(VRC_AnimatorTrackingControl.TrackingType trackingType)
+            private static (Color? color, string text) TrackingTuple(VRC_AnimatorTrackingControl.TrackingType trackingType) => trackingType switch
             {
-                switch (trackingType)
+                VRC_AnimatorTrackingControl.TrackingType.NoChange => (Color.yellow, "No Change"),
+                VRC_AnimatorTrackingControl.TrackingType.Tracking => (Color.green, "Tracking"),
+                VRC_AnimatorTrackingControl.TrackingType.Animation => (Color.red, "Animation"),
+                _ => throw new ArgumentOutOfRangeException(nameof(trackingType), trackingType, null)
+            };
+
+            private static (Color? color, string text) LabelTuple(Vrc3Param param) => param.Type switch
+            {
+                AnimatorControllerParameterType.Float => (null, param.FloatValue().ToString("0.00")),
+                AnimatorControllerParameterType.Int => (null, param.IntValue().ToString()),
+                AnimatorControllerParameterType.Bool => param.BoolValue() ? (Color.green, "True") : (Color.red, "False"),
+                AnimatorControllerParameterType.Trigger => param.BoolValue() ? (Color.green, "True") : (Color.red, "False"),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            private static void FieldTuple(Vrc3Param param, ModuleVrc3 module, GUILayoutOption innerOption)
+            {
+                var rect = GUILayoutUtility.GetRect(new GUIContent(), GUI.skin.label, innerOption);
+                switch (param.Type)
                 {
-                    case VRC_AnimatorTrackingControl.TrackingType.NoChange:
-                        return (Color.yellow, "No Change");
-                    case VRC_AnimatorTrackingControl.TrackingType.Tracking:
-                        return (Color.green, "Tracking");
-                    case VRC_AnimatorTrackingControl.TrackingType.Animation:
-                        return (Color.red, "Animation");
-                    default: throw new ArgumentOutOfRangeException(nameof(trackingType), trackingType, null);
+                    case AnimatorControllerParameterType.Float:
+                        if (GmgLayoutHelper.UnityFieldEnterListener(param.FloatValue(), module, rect, EditorGUI.FloatField, param.Set, module.Edit)) module.Edit = null;
+                        break;
+                    case AnimatorControllerParameterType.Int:
+                        if (GmgLayoutHelper.UnityFieldEnterListener(param.IntValue(), module, rect, EditorGUI.IntField, param.Set, module.Edit)) module.Edit = null;
+                        break;
+                    case AnimatorControllerParameterType.Bool:
+                    case AnimatorControllerParameterType.Trigger:
+                        param.Set(module, !param.BoolValue());
+                        module.Edit = null;
+                        break;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
 

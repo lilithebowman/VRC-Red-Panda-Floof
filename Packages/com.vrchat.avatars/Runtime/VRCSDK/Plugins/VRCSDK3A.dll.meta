@@ -3,7 +3,9 @@ guid: 67cc4cb7839cd3741b63733d5adf0442
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
-  iconMap: {}
+  iconMap:
+    VRC.SDK3.Avatars.ScriptableObjects.VRCExpressionParameters: {fileID: 2800000, guid: b54460437079b5a4fb73ecebc0aef4dc, type: 3}
+    VRC.SDK3.Avatars.ScriptableObjects.VRCExpressionsMenu: {fileID: 2800000, guid: 576142c89b11bc84e974b3740e480a63, type: 3}
   executionOrder: {}
   defineConstraints: []
   isPreloaded: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UIElements.Experimental;
 using VRC.SDKBase;
+using VRC.SDKBase.Editor.Elements;
 
 [assembly: UxmlNamespacePrefix("VRC.SDK3A.Editor.Elements", "vrca")]
 namespace VRC.SDK3A.Editor.Elements
@@ -29,18 +30,49 @@ namespace VRC.SDK3A.Editor.Elements
         private PopupField<VRC_AvatarDescriptor> _popupField;
         private VisualElement _popupInput;
         private EventCallback<ChangeEvent<VRC_AvatarDescriptor>> _changeCallback;
+        private readonly VisualElement _popupContainer;
+        private readonly Button _optionsButton;
+        private readonly PerPlatformOverridesElement _perPlatformOverridesElement;
+        
+        public VRC_AvatarDescriptor SelectedAvatar => _popupField?.value;
 
         public AvatarSelector()
         {
+            Resources.Load<VisualTreeAsset>("AvatarSelector").CloneTree(this);
+            styleSheets.Add(Resources.Load<StyleSheet>("AvatarSelectorStyles"));
+            _popupContainer = this.Q("avatar-selector-dropdown");
+            _optionsButton = this.Q<Button>("avatar-selector-options");
+            var perPlatformConfigModal = this.Q<Modal>("avatar-per-platform-config-modal");
+            var perPlatformConfigMarker = this.Q("avatar-options-active-marker");
+            _perPlatformOverridesElement = this.Q<PerPlatformOverridesElement>();
+            
+            _perPlatformOverridesElement.OnPerPlatformOverridesChanged += (_, config) =>
+            {
+                perPlatformConfigMarker.EnableInClassList("d-none", (config?.Count ?? 0) == 0);
+            };
+            
+            _optionsButton.clicked += () =>
+            {
+                perPlatformConfigModal.SetAnchor(this.panel.visualTree.Q("content-info-block"));
+                _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject);
+                perPlatformConfigModal.Open();
+            };
+
+            VRCSdkControlPanel.OnUserPlatformsFetched += (_, _) =>
+            {
+                _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject);
+            };
+            
             CreateField(new List<VRC_AvatarDescriptor>(), 0);
+            _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject);
             PingField();
         }
 
         private void CreateField(List<VRC_AvatarDescriptor> options, int selectedIndex)
         {
-            if (this.Contains(_popupField))
+            if (_popupContainer.Contains(_popupField))
             {
-                this.Remove(_popupField);
+                _popupContainer.Remove(_popupField);
             }
 
             if (options.Count == 0)
@@ -49,7 +81,7 @@ namespace VRC.SDK3A.Editor.Elements
             }
             
             _popupField = new PopupField<VRC_AvatarDescriptor>(
-                "Selected Avatar",
+                null,
                 options,
                 selectedIndex,
                 avatar => FormatAvatarName(options, avatar),
@@ -57,17 +89,13 @@ namespace VRC.SDK3A.Editor.Elements
             );
             _popupInput = _popupField.Q<VisualElement>(null, "unity-popup-field__input");
             _popupField.name = "avatar-selector-popup";
-            var icon = new VisualElement
-            {
-                name = "icon"
-            };
-            _popupField.hierarchy.Insert(0, icon);
             _popupField.AddToClassList("flex-grow-1");
             if (_changeCallback != null)
             {
                 _popupField.RegisterValueChangedCallback(_changeCallback);
+                _popupField.RegisterValueChangedCallback(_ => _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject));
             }
-            Add(_popupField);
+            _popupContainer.Add(_popupField);
         }
         
         private string FormatAvatarName(List<VRC_AvatarDescriptor> options, VRC_AvatarDescriptor avatar)
@@ -79,12 +107,14 @@ namespace VRC.SDK3A.Editor.Elements
         public void SetAvatars(List<VRC_AvatarDescriptor> avatars, int selectedIndex)
         {
             CreateField(avatars, selectedIndex);
+            _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject);
             PingField();
         }
 
         public void SetAvatarSelection(VRC_AvatarDescriptor avatar)
         {
             _popupField.value = avatar;
+            _perPlatformOverridesElement.CreatePerPlatformConfig(SelectedAvatar?.gameObject);
         }
         
         public void RegisterValueChangedCallback(EventCallback<ChangeEvent<VRC_AvatarDescriptor>> callback)

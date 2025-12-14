@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using VRC.SDK3.Avatars.Components;
+using VRC.SDK3.Avatars.ScriptableObjects;
 
 public partial class AvatarDescriptorEditor3 : Editor
 {
@@ -14,6 +15,12 @@ public partial class AvatarDescriptorEditor3 : Editor
 		var menu = serializedObject.FindProperty("expressionsMenu");
 		var parameters = serializedObject.FindProperty("expressionParameters");
 		var customize = serializedObject.FindProperty("customExpressions");
+
+		VRCExpressionsMenu menuObj = (VRCExpressionsMenu)menu.objectReferenceValue;
+		if (menuObj != null && menuObj.Parameters == null)
+		{
+			menuObj.Parameters = (VRCExpressionParameters)parameters.objectReferenceValue;
+		}
 
 		if (Foldout(_ExpressionsFoldoutPrefsKey, "Expressions", false))
 		{

@@ -20,11 +20,11 @@ namespace VRC.SDK3.Validation
         }
         public static IEnumerable<Component> FindIllegalComponents(GameObject target)
         {
-            return ValidationUtils.FindIllegalComponents(target, GetComponentWhitelist());
+            return ValidationUtils.FindIllegalComponents(target, GetComponentWhitelist(), excludeEditorOnly:true);
         }
         public static IEnumerable<Shader> FindIllegalShaders(GameObject target)
         {
-            return ShaderValidation.FindIllegalShaders(target, VRC.SDKBase.Validation.AvatarValidation.ShaderWhiteList);
+            return ValidationUtils.FindIllegalShaders(target, VRC.SDKBase.Validation.AvatarValidation.ShaderWhiteList);
         }
     }
 }

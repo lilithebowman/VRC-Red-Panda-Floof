@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 
 namespace VRC.SDK3A.Editor
 {
@@ -10,6 +12,9 @@ namespace VRC.SDK3A.Editor
         public const string AVATAR_TAGS_KEY = SESSION_STATE_PREFIX + ".Avatar.Tags";
         public const string AVATAR_THUMBPATH_KEY = SESSION_STATE_PREFIX + ".Avatar.ThumbPath";
         public const string AVATAR_RELEASE_STATUS_KEY = SESSION_STATE_PREFIX + ".Avatar.ReleaseStatus";
+        public const string AVATAR_SELECTED_PLATFORMS_KEY = SESSION_STATE_PREFIX + ".Avatar.Platforms";
+        public const string AVATAR_PRIMARY_STYLE_KEY = SESSION_STATE_PREFIX + ".Avatar.Style.Primary";
+        public const string AVATAR_SECONDARY_STYLE_KEY = SESSION_STATE_PREFIX + ".Avatar.Style.Secondary";
 
         public static string AvatarName
         {
@@ -40,6 +45,33 @@ namespace VRC.SDK3A.Editor
             get => SessionState.GetString(AVATAR_RELEASE_STATUS_KEY, "private");
             set => SessionState.SetString(AVATAR_RELEASE_STATUS_KEY, value);
         }
+        
+        public static List<BuildTarget> AvatarPlatforms
+        {
+            get
+            {
+                var loaded = SessionState.GetString(AVATAR_SELECTED_PLATFORMS_KEY, string.Empty);
+                if (string.IsNullOrWhiteSpace(loaded)) return new List<BuildTarget>();
+                return loaded.Split('|').Select(s => (BuildTarget) int.Parse(s)).ToList();
+            }
+            set
+            {
+                var serialized = string.Join("|", value.Select(t => ((int) t).ToString()));
+                SessionState.SetString(AVATAR_SELECTED_PLATFORMS_KEY, serialized);
+            }
+        }
+        
+        public static string AvatarPrimaryStyle
+        {
+            get => SessionState.GetString(AVATAR_PRIMARY_STYLE_KEY, null);
+            set => SessionState.SetString(AVATAR_PRIMARY_STYLE_KEY, value);
+        }
+        
+        public static string AvatarSecondaryStyle
+        {
+            get => SessionState.GetString(AVATAR_SECONDARY_STYLE_KEY, null);
+            set => SessionState.SetString(AVATAR_SECONDARY_STYLE_KEY, value);
+        }
 
         public static void Clear()
         {
@@ -48,6 +80,8 @@ namespace VRC.SDK3A.Editor
             SessionState.EraseString(AVATAR_TAGS_KEY);
             SessionState.EraseString(AVATAR_THUMBPATH_KEY);
             SessionState.EraseString(AVATAR_RELEASE_STATUS_KEY);
+            SessionState.EraseString(AVATAR_PRIMARY_STYLE_KEY);
+            SessionState.EraseString(AVATAR_SECONDARY_STYLE_KEY);
         }
     }
 }

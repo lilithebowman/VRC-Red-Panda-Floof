@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using BlackStartX.GestureManager.Data;
 using BlackStartX.GestureManager.Editor.Data;
-using BlackStartX.GestureManager.Editor.Lib;
+using BlackStartX.GestureManager.Editor.Library;
 using BlackStartX.GestureManager.Editor.Modules;
 using UnityEditor;
 using UnityEngine;
@@ -86,13 +86,14 @@ namespace BlackStartX.GestureManager.Editor
         private void TryInitialize()
         {
             if (!Manager.enabled || !Manager.gameObject.activeInHierarchy || Manager.Module != null) return;
-            Manager.StartCoroutine(TryInitializeRoutine(ModuleHelper.GetModuleFor(Manager.settings.favourite)));
+            var enumerator = TryInitializeRoutine(ModuleHelper.GetModuleFor(Manager.settings.favourite));
+            Manager.StartCoroutine(enumerator);
         }
 
         private IEnumerator TryInitializeRoutine(ModuleBase module)
         {
             yield return null;
-            module = module ?? GetValidDescriptor();
+            module ??= GetValidDescriptor();
             if (module != null) Manager.SetModule(module);
         }
 
@@ -211,22 +212,22 @@ namespace BlackStartX.GestureManager.Editor
          * Layout Builders
          */
 
-        internal static void OnCheckBoxGuiHand(ModuleBase module, GestureHand hand, int position, Action<int> click)
+        internal static void OnCheckBoxGuiHand(ModuleBase module, GestureHand hand, int position, Action<int> click, Func<int, bool> overridden = null)
         {
             for (var i = 1; i < 8; i++)
                 using (new GUILayout.HorizontalScope())
-                    if (OnCheckBoxGuiHandAnimation(module, i, position, click, out var isOn))
+                    if (OnCheckBoxGuiHandAnimation(module, i, position, click, out var isOn, overridden))
                         module.OnNewHand(hand, isOn ? i : 0);
         }
 
-        private static bool OnCheckBoxGuiHandAnimation(ModuleBase module, int i, int position, Action<int> click, out bool isOn)
+        private static bool OnCheckBoxGuiHandAnimation(ModuleBase module, int i, int position, Action<int> click, out bool isOn, Func<int, bool> overridden)
         {
             GUILayout.Label(module.GetGestureTextNameByIndex(i));
             GUILayout.FlexibleSpace();
             isOn = position == i;
             var isDifferent = isOn != (isOn = GUILayout.Toggle(isOn, ""));
             if (click == null) return isDifferent;
-            if (!module.HasGestureBeenOverridden(i)) OverrideButton(i, click);
+            if (overridden?.Invoke(i) ?? false) OverrideButton(i, click);
             else GUILayout.Space(35);
             return isDifferent;
         }
@@ -278,7 +279,7 @@ namespace BlackStartX.GestureManager.Editor
             }
         }
 
-        private static async Task<string> GetDiscord() => await Get(DiscordURL);
-        private static async Task<string> GetSupport() => await Get(SupportURL);
+        private static Task<string> GetDiscord() => Get(DiscordURL);
+        private static Task<string> GetSupport() => Get(SupportURL);
     }
 }

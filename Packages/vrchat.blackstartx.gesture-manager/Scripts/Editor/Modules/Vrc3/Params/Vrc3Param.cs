@@ -1,41 +1,45 @@
 ﻿#if VRC_SDK_VRCSDK3
 using System;
 using System.Collections.Generic;
-using BlackStartX.GestureManager.Editor.Lib;
-using UnityEditor;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Playables;
+using VRC.SDKBase;
 
 namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Params
 {
-    public abstract class Vrc3Param
+    public class Vrc3Param
     {
-        protected readonly HashSet<AnimatorControllerPlayable> Playables = new HashSet<AnimatorControllerPlayable>();
+        private readonly Dictionary<AnimatorControllerPlayable, PlayableParam> _controllers = new();
 
         public readonly AnimatorControllerParameterType Type;
-        private readonly Func<float, float> _converted;
-        protected readonly int HashId;
+        private readonly int _hashId;
         public readonly string Name;
         public int LastUpdate;
 
+        private float _value;
         private Action<Vrc3Param, float> _onChange;
 
-        protected Vrc3Param(string name, AnimatorControllerParameterType type)
+        public Vrc3Param(string name, AnimatorControllerParameterType type, Action<Vrc3Param, float> onChange = null)
         {
             Name = name;
             Type = type;
             LastUpdate = Time;
-            HashId = Animator.StringToHash(Name);
-            _converted = GenerateConverter();
+            _onChange = onChange;
+            _hashId = Animator.StringToHash(Name);
         }
 
-        public void Set(ModuleVrc3 module, float value)
+        public Vrc3Param(string name, AnimatorControllerParameterType type, AnimatorControllerPlayable playable, int index) : this(name, type) => Subscribe(playable, index);
+
+        public void Set(ModuleVrc3 module, float value, object source = null)
         {
-            if (Is(value = _converted(value))) return;
-            module.OscModule.OnParameterChange(this, value);
+            var isSame = RadialMenuUtility.Is(FloatValue(), value);
             LastUpdate = Time;
-            InternalSet(value);
+            InternalSet(value, source);
+            if (isSame) return;
             _onChange?.Invoke(this, value);
+            module.OscModule.OnParameterChange(this, value);
             foreach (var menu in module.Radials) menu.UpdateValue(Name, value);
         }
 
@@ -43,36 +47,50 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Params
 
         public static int Time => (int)(DateTime.Now.Ticks / 100000L);
 
-        private void Set(ModuleVrc3 module, bool value) => Set(module, value ? 1f : 0f);
+        public void Subscribe(AnimatorControllerPlayable playable, int index) => _controllers[playable] = new PlayableParam(playable, index, _hashId);
 
-        private void Set(ModuleVrc3 module, int value) => Set(module, (float)value);
+        public void Set(ModuleVrc3 module, bool value, object source = null) => Set(module, value ? 1f : 0f, source);
 
-        public void Subscribe(AnimatorControllerPlayable playable) => Playables.Add(playable);
+        public void Set(ModuleVrc3 module, int value, object source = null) => Set(module, (float)value, source);
 
-        public void Set(ModuleVrc3 module, float? value)
+        public void Set(ModuleVrc3 module, float? value, object source = null)
         {
-            if (value.HasValue) Set(module, value.Value);
+            if (value.HasValue) Set(module, value.Value, source);
         }
 
-        public void Set(ModuleVrc3 module, bool? value)
+        public void Set(ModuleVrc3 module, int? value, object source = null)
         {
-            if (value.HasValue) Set(module, value.Value);
+            if (value.HasValue) Set(module, value.Value, source);
+        }
+
+        public void Set(ModuleVrc3 module, bool? value, object source = null)
+        {
+            if (value.HasValue) Set(module, value.Value, source);
         }
 
         public void SetOnChange(Action<Vrc3Param, float> onChange) => _onChange = onChange;
 
-        private bool Is(float value) => RadialMenuUtility.Is(FloatValue(), value);
+        internal float AapValue()
+        {
+            var (playable, param) = _controllers.FirstOrDefault();
+            return playable.IsValid() ? param.GetValue(aapChk: true) : _value;
+        }
 
-        [Obsolete("This method be removed on 3.9, override FloatValue for now on. Kept for compilation compatibility.")]
-        public virtual float Get() => 0f;
-
-        public virtual float FloatValue() => Get();
+        public virtual float FloatValue()
+        {
+            var (playable, param) = _controllers.FirstOrDefault();
+            return playable.IsValid() ? param.GetValue() : _value;
+        }
 
         public int IntValue() => (int)FloatValue();
 
-        public bool BoolValue() => FloatValue() > 0.5f;
+        public bool BoolValue() => FloatValue() != 0f;
 
-        protected internal abstract void InternalSet(float value);
+        protected internal virtual void InternalSet(float value, object source = null)
+        {
+            _value = value;
+            foreach (var pair in _controllers.Where(pair => ModuleVrc3.IsValid(pair.Key))) pair.Value.SetValue(value, source);
+        }
 
         public void Add(ModuleVrc3 module, float value) => Set(module, FloatValue() + value);
 
@@ -89,7 +107,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Params
                     break;
                 case AnimatorControllerParameterType.Bool:
                 case AnimatorControllerParameterType.Trigger:
-                    Set(module, !RadialMenuUtility.Is(floatValue, 0));
+                    Set(module, floatValue != 0f);
                     break;
                 default: throw new ArgumentOutOfRangeException();
             }
@@ -117,53 +135,51 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Params
             }
         }
 
-        public (Color? color, string text) LabelTuple()
+        private class PlayableParam
         {
-            switch (Type)
-            {
-                case AnimatorControllerParameterType.Float:
-                    return (null, FloatValue().ToString("0.00"));
-                case AnimatorControllerParameterType.Int:
-                    return (null, IntValue().ToString());
-                case AnimatorControllerParameterType.Bool:
-                case AnimatorControllerParameterType.Trigger:
-                    return BoolValue() ? (Color.green, "True") : (Color.red, "False");
-                default: throw new ArgumentOutOfRangeException();
-            }
-        }
+            private AnimatorControllerPlayable _playable;
 
-        public void FieldTuple(ModuleVrc3 module, GUILayoutOption innerOption)
-        {
-            var rect = GUILayoutUtility.GetRect(new GUIContent(), GUI.skin.label, innerOption);
-            switch (Type)
-            {
-                case AnimatorControllerParameterType.Float:
-                    if (GmgLayoutHelper.UnityFieldEnterListener(FloatValue(), module, rect, EditorGUI.FloatField, Set, module.Edit)) module.Edit = null;
-                    break;
-                case AnimatorControllerParameterType.Int:
-                    if (GmgLayoutHelper.UnityFieldEnterListener(IntValue(), module, rect, EditorGUI.IntField, Set, module.Edit)) module.Edit = null;
-                    break;
-                case AnimatorControllerParameterType.Bool:
-                case AnimatorControllerParameterType.Trigger:
-                    Set(module, !BoolValue());
-                    module.Edit = null;
-                    break;
-                default: throw new ArgumentOutOfRangeException();
-            }
-        }
+            private readonly int _hashId;
+            private readonly AnimatorControllerParameterType _type;
 
-        private Func<float, float> GenerateConverter()
-        {
-            switch (Type)
+            private bool _isAap() => _playable.IsParameterControlledByCurve(_hashId);
+
+            public PlayableParam(AnimatorControllerPlayable playable, int index, int hashId)
             {
-                case AnimatorControllerParameterType.Float:
-                    return value => value;
-                case AnimatorControllerParameterType.Int:
-                    return value => (int)value;
-                case AnimatorControllerParameterType.Bool:
-                case AnimatorControllerParameterType.Trigger:
-                    return value => value > 0.5f ? 1f : 0f;
-                default: throw new ArgumentOutOfRangeException();
+                _playable = playable;
+                _hashId = hashId;
+
+                _type = playable.GetParameter(index).type;
+            }
+
+            internal float GetValue(bool aapChk = false) => _type switch
+            {
+                AnimatorControllerParameterType.Float => aapChk && _isAap() ? 0f : _playable.GetFloat(_hashId),
+                AnimatorControllerParameterType.Trigger => _playable.GetBool(_hashId) ? 1f : 0f,
+                AnimatorControllerParameterType.Bool => _playable.GetBool(_hashId) ? 1f : 0f,
+                AnimatorControllerParameterType.Int => _playable.GetInteger(_hashId),
+                _ => 0f
+            };
+
+            public void SetValue(float value, object source)
+            {
+                if (_isAap()) return;
+                switch (_type)
+                {
+                    case AnimatorControllerParameterType.Float:
+                        _playable.SetFloat(_hashId, value);
+                        break;
+                    case AnimatorControllerParameterType.Int:
+                        _playable.SetInteger(_hashId, (int)Math.Round(value));
+                        break;
+                    case AnimatorControllerParameterType.Trigger:
+                        if (value != 0f || source is VRC_AvatarParameterDriver) _playable.SetTrigger(_hashId);
+                        break;
+                    case AnimatorControllerParameterType.Bool:
+                        _playable.SetBool(_hashId, value != 0f);
+                        break;
+                    default: throw new ArgumentOutOfRangeException();
+                }
             }
         }
     }

@@ -45,7 +45,7 @@ namespace VRC.SDK3A.Editor
         
         public override bool IsValidBuilder(out string message)
         {
-            if (!UnityEditor.EditorPrefs.GetBool("VRC.SDK3.EnableV3", false))
+            if (!VRC.SDKBase.Editor.V3.V3SdkUI.V3Enabled())
             {
                 message = "SDK V3 pipeline is not enabled.";
                 return false;

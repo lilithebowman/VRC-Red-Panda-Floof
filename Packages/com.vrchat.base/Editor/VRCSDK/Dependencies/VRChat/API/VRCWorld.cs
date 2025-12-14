@@ -13,6 +13,7 @@ namespace VRC.SDKBase.Editor.Api
         public string Description { get; set; }
         public string PreviewYoutubeId { get; set; }
         public List<string> Tags { get; set; }
+        public List<string> UdonProducts { get; set; }
         
         public string AuthorName { get; set; }
         public string AuthorId { get; set; }

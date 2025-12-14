@@ -131,7 +131,7 @@ public class AvatarParameterDriverEditor : Editor
 
 		void DrawSet()
 		{
-			var destIndex = DrawParamaterDropdown(name, "Destination");
+			var destIndex = DrawParameterDropdown(name, "Destination");
 			var valueType = destIndex >= 0 ? parameterTypes[destIndex] : AnimatorControllerParameterType.Float;
 			switch(valueType)
 			{
@@ -163,7 +163,7 @@ public class AvatarParameterDriverEditor : Editor
 		}
 		void DrawAdd()
 		{
-			var destIndex = DrawParamaterDropdown(name, "Destination");
+			var destIndex = DrawParameterDropdown(name, "Destination");
 			var valueType = destIndex >= 0 ? parameterTypes[destIndex] : AnimatorControllerParameterType.Float;
 			switch(valueType)
 			{
@@ -186,7 +186,7 @@ public class AvatarParameterDriverEditor : Editor
 		}
 		void DrawRandom()
 		{
-			var destIndex = DrawParamaterDropdown(name, "Destination");
+			var destIndex = DrawParameterDropdown(name, "Destination");
 			var valueType = destIndex >= 0 ? parameterTypes[destIndex] : AnimatorControllerParameterType.Float;
 			switch(valueType)
 			{
@@ -212,9 +212,9 @@ public class AvatarParameterDriverEditor : Editor
 		}
 		void DrawCopy()
 		{
-			var sourceIndex = DrawParamaterDropdown(source, "Source");
+			var sourceIndex = DrawParameterDropdown(source, "Source");
 			var sourceValueType = sourceIndex >= 0 ? parameterTypes[sourceIndex] : AnimatorControllerParameterType.Float;
-			var destIndex = DrawParamaterDropdown(name, "Destination");
+			var destIndex = DrawParameterDropdown(name, "Destination");
 			var destValueType = destIndex >= 0 ? parameterTypes[destIndex] : AnimatorControllerParameterType.Float;
 			switch(destValueType)
 			{
@@ -268,7 +268,7 @@ public class AvatarParameterDriverEditor : Editor
 			}
 		}
 	}
-	int DrawParamaterDropdown(SerializedProperty name, string label)
+	int DrawParameterDropdown(SerializedProperty name, string label)
 	{
 		//Name
 		EditorGUILayout.BeginHorizontal();

@@ -1,40 +1,37 @@
-﻿using System.Collections.Generic;
-using UnityEditor.Animations;
+﻿using UnityEditor.Animations;
 using UnityEngine;
 
 namespace BlackStartX.GestureManager.Editor.Library
 {
     public static class GmgAnimatorControllerHelper
     {
-        public static IEnumerable<KeyValuePair<AnimationClip, AnimationClip>> GetOverrides(AnimatorOverrideController overrideController)
-        {
-            var overrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
-            overrideController.GetOverrides(overrides);
-            return overrides;
-        }
+        private static readonly Vector3 ExitPosition = new(50, 150);
+        private static readonly Vector3 Position = new(30, 65);
 
-        public static AnimatorController CreateControllerWith(IEnumerable<AnimationClip> clips)
-        {
-            var controller = CreateControllerWith(new AnimationClip { name = "[SELECT YOUR ANIMATION!]" });
-            foreach (var clip in clips) AddMotion(controller, clip);
-            return controller;
-        }
+        private const string Old = ".";
+        private const string New = "_";
 
-        public static AnimatorController CreateControllerWith(AnimationClip clip)
+        public static AnimatorController CreateController()
         {
             var controller = new AnimatorController { layers = new[] { new AnimatorControllerLayer { stateMachine = new AnimatorStateMachine() } } };
-            controller.AddMotion(clip);
+            controller.layers[0].stateMachine.exitPosition = ExitPosition;
             return controller;
         }
 
-        private static void AddMotion(AnimatorController controller, Motion motion) => AddMotion(controller, motion, motion.name.Replace(".", "_"));
-
-        private static void AddMotion(AnimatorController controller, Motion motion, string name)
+        public static AnimatorController CreateControllerWith(Motion motion)
         {
-            var originalName = motion.name;
-            motion.name = name;
-            controller.AddMotion(motion);
-            motion.name = originalName;
+            var controller = CreateController();
+            AddMotion(controller, motion);
+            return controller;
+        }
+
+        public static AnimatorState AddMotion(AnimatorController controller, Motion motion) => AddMotion(controller, motion, motion.name.Replace(Old, New));
+
+        private static AnimatorState AddMotion(AnimatorController controller, Motion motion, string name)
+        {
+            var state = controller.layers[0].stateMachine.AddState(name, Position);
+            state.motion = motion;
+            return state;
         }
     }
 }

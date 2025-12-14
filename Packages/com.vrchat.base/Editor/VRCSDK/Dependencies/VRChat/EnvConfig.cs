@@ -1,14 +1,16 @@
-﻿#define ENV_SET_INCLUDED_SHADERS
+#define ENV_SET_INCLUDED_SHADERS
 
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
 using UnityEditor.PackageManager.Requests;
+using UnityEditor.SceneManagement;
 using UnityEditor.XR.Management;
 using UnityEditor.XR.Management.Metadata;
 using UnityEngine.Rendering;
@@ -71,6 +73,17 @@ namespace VRC.Editor
 
         private static bool _requestConfigureSettings = true;
 
+        private static readonly Lazy<string> _debugCategoryName = new Lazy<string>(InitializeLogging);
+        private static string DebugCategoryName => _debugCategoryName.Value;
+
+        private static string InitializeLogging()
+        {
+            const string categoryName = "EnvConfig";
+            VRC.Core.Logger.DescribeCategory(categoryName, "EC", VRC.Core.Logger.Color.cyan);
+            //VRC.Core.Logger.EnableCategory(categoryName);
+            return categoryName;
+        }
+
         static EnvConfig()
         {
             EditorApplication.update += EditorUpdate;
@@ -122,7 +135,7 @@ namespace VRC.Editor
 
             if(!VRC.Core.ConfigManager.RemoteConfig.IsInitialized())
             {
-                VRC.Core.API.SetOnlineMode(true, "vrchat");
+                VRC.Core.API.SetOnlineMode(true);
                 VRC.Core.ConfigManager.RemoteConfig.Init();
             }
 
@@ -215,7 +228,7 @@ namespace VRC.Editor
         [MenuItem("VRChat SDK/Utilities/Force Configure Player Settings")]
         public static void ConfigurePlayerSettings()
         {
-            VRC.Core.Logger.Log("Setting required PlayerSettings...", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Setting required PlayerSettings...", DebugCategoryName);
 
             SetBuildTarget();
 
@@ -233,6 +246,7 @@ namespace VRC.Editor
 
             SetDLLPlatforms("VRCCore-Standalone", false);
             SetDLLPlatforms("VRCCore-Editor", true);
+            SetSpatializerPluginSettings();
 
             SetDefaultGraphicsAPIs();
             SetGraphicsSettings();
@@ -240,6 +254,7 @@ namespace VRC.Editor
             SetAudioSettings();
             SetPlayerSettings();
             SetVRSDKs(EditorUserBuildSettings.selectedBuildTargetGroup, new string[] { "None", "Oculus" });
+            SetTextureSettings();
         }
 
         internal static void EnableBatching(bool enable)
@@ -302,10 +317,10 @@ namespace VRC.Editor
                 throw new ArgumentNullException(nameof(sdkNames));
             }
 
-            VRC.Core.Logger.Log("Setting virtual reality SDKs in PlayerSettings: ", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Setting virtual reality SDKs in PlayerSettings: ", DebugCategoryName);
             foreach(string s in sdkNames)
             {
-                VRC.Core.Logger.Log("- " + s, VRC.Core.DebugLevel.All);
+                VRC.Core.Logger.Log("- " + s, DebugCategoryName);
             }
 
             if(!EditorApplication.isPlaying)
@@ -329,6 +344,7 @@ namespace VRC.Editor
                 }
                 
                 var assignedLoaders = new bool[loadersToAssign.Count];
+                var validLoaders = new bool[loadersToAssign.Count];
                 Array.Fill(assignedLoaders, false);
 
                 {
@@ -359,7 +375,8 @@ namespace VRC.Editor
                         if (loaderIndex != -1)
                         {
                             assignedLoaders[loaderIndex] = true;
-
+                            validLoaders[loaderIndex] = true;
+                            
                             if (loadersThatNeedsRestart.Contains(loader.loaderType) && 
                                 !XRPackageMetadataStore.IsLoaderAssigned(loader.loaderType, buildTargetGroup))
                             {
@@ -369,7 +386,7 @@ namespace VRC.Editor
                             
                             if (XRPackageMetadataStore.AssignLoader(pluginsSettings, loader.loaderType, buildTargetGroup))
                             {
-                                VRC.Core.Logger.Log($"Assigned XR loader - {loader.loaderType} (buildTargetGroup: {buildTargetGroup})", VRC.Core.DebugLevel.All);
+                                VRC.Core.Logger.Log($"Assigned XR loader - {loader.loaderType} (buildTargetGroup: {buildTargetGroup})", DebugCategoryName);
                             }
                         }
                         else
@@ -383,7 +400,7 @@ namespace VRC.Editor
                             
                             if (XRPackageMetadataStore.RemoveLoader(pluginsSettings, loader.loaderType, buildTargetGroup))
                             {
-                                VRC.Core.Logger.Log($"Removed XR loader - {loader.loaderType} (buildTargetGroup: {buildTargetGroup})", VRC.Core.DebugLevel.All);
+                                VRC.Core.Logger.Log($"Removed XR loader - {loader.loaderType} (buildTargetGroup: {buildTargetGroup})", DebugCategoryName);
                             }
                         }
                     }
@@ -391,7 +408,8 @@ namespace VRC.Editor
 
                 for  (int i = 0; i < assignedLoaders.Length; ++i)
                 {
-                    if (!assignedLoaders[i])
+                    // Only create an error for loaders that are valid for the particular platform
+                    if (!assignedLoaders[i] && validLoaders[i])
                     {
                         VRC.Core.Logger.LogError($"Failed to assign loader '{loadersToAssign[i]}'. Ensure the plugin is configured for the project correctly.");
 
@@ -433,6 +451,17 @@ namespace VRC.Editor
             return false;
         }
 
+        private static void SetTextureSettings()
+        {
+            // We only force-apply this setting outside of mobile targets to avoid a sudden texture reimport without user consent
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android &&
+                EditorUserBuildSettings.androidBuildSubtarget != MobileTextureSubtarget.ASTC)
+            {
+                EditorUserBuildSettings.androidBuildSubtarget = MobileTextureSubtarget.ASTC;
+            }
+            
+        }
+
         private static void RequestRestart(string loader)
         {
             if (!Application.isBatchMode && !EditorPrefs.GetBool("PlatformSwitchRestart"))
@@ -462,7 +491,7 @@ namespace VRC.Editor
 
         private static void SetDefaultGraphicsAPIs()
         {
-            VRC.Core.Logger.Log("Setting Graphics APIs", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Setting Graphics APIs", DebugCategoryName);
             foreach(BuildTarget target in relevantBuildTargets)
             {
                 GraphicsDeviceType[] apis = allowedGraphicsAPIs[target];
@@ -519,7 +548,7 @@ namespace VRC.Editor
 
         internal static void SetQualitySettings()
         {
-            VRC.Core.Logger.Log("Setting Graphics Settings", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Setting Quality Settings", DebugCategoryName);
             const string qualitySettingsAssetPath = "ProjectSettings/QualitySettings.asset";
             SerializedObject qualitySettings = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(qualitySettingsAssetPath)[0]);
 
@@ -691,7 +720,7 @@ namespace VRC.Editor
 
         internal static void SetGraphicsSettings()
         {
-            VRC.Core.Logger.Log("Setting Graphics Settings", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Setting Graphics Settings", DebugCategoryName);
 
             const string graphicsSettingsAssetPath = "ProjectSettings/GraphicsSettings.asset";
             SerializedObject graphicsManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(graphicsSettingsAssetPath)[0]);
@@ -907,7 +936,7 @@ namespace VRC.Editor
 
         public static FogSettings GetFogSettings()
         {
-            VRC.Core.Logger.Log("Force-enabling Fog", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Force-enabling Fog", DebugCategoryName);
 
             const string graphicsSettingsAssetPath = "ProjectSettings/GraphicsSettings.asset";
             SerializedObject graphicsManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(graphicsSettingsAssetPath)[0]);
@@ -931,7 +960,7 @@ namespace VRC.Editor
 
         public static void SetFogSettings(FogSettings fogSettings)
         {
-            VRC.Core.Logger.Log("Force-enabling Fog", VRC.Core.DebugLevel.All);
+            VRC.Core.Logger.Log("Force-enabling Fog", DebugCategoryName);
 
             const string graphicsSettingsAssetPath = "ProjectSettings/GraphicsSettings.asset";
             SerializedObject graphicsManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(graphicsSettingsAssetPath)[0]);
@@ -982,6 +1011,58 @@ namespace VRC.Editor
             audioManagerSerializedObject.ApplyModifiedPropertiesWithoutUndo();
             AssetDatabase.SaveAssets();
         }
+        
+        private static void SetSpatializerPluginSettings()
+        {
+            string[] desktopGuids = AssetDatabase.FindAssets("AudioPluginOculusSpatializer");
+
+            var plugins = new List<PluginImporter>();
+            foreach (var guid in desktopGuids)
+            {
+                var importer = AssetImporter.GetAtPath(AssetDatabase.GUIDToAssetPath(guid)) as PluginImporter;
+                if (importer == null)
+                {
+                    continue;
+                }
+
+                if (importer.assetPath.Contains("com.vrchat.base"))
+                {
+                    plugins.Add(importer);
+                }
+            }
+
+            var shouldWarn = false;
+
+            foreach (var plugin in plugins)
+            {
+                var sO = new SerializedObject(plugin);
+                var overrideProp = sO.FindProperty("m_IsOverridable");
+                if (overrideProp.boolValue)
+                {
+                    shouldWarn = true;
+                }
+                overrideProp.boolValue = false;
+                sO.ApplyModifiedProperties();
+                plugin.SaveAndReimport();
+            }
+
+            if (shouldWarn)
+            {
+                if (!EditorUtility.DisplayDialog(
+                        "Spatializer Settings Updated", 
+                        "VRChat SDK detected incorrect Audio Spatializer settings and corrected them." +
+                        "\n\nFor the changes to fully apply - you need to restart your editor",
+                        "Restart Later",
+                        "Save and Restart",
+                        DialogOptOutDecisionType.ForThisMachine,
+                        "VRC.Editor.EnvConfig.ShowSpatializerApplyDialog")
+                   )
+                {
+                    EditorSceneManager.SaveOpenScenes();
+                    EditorApplication.OpenProject(Directory.GetCurrentDirectory());
+                }
+            }
+        }
 
         private static void SetPlayerSettings()
         {
@@ -1003,13 +1084,15 @@ namespace VRC.Editor
             #pragma warning restore 618
             }
             
-            #if (UNITY_ANDROID || UNITY_IOS) && VRC_ENABLE_MOBILE_GRAPHICS_JOBS
-            PlayerSettings.graphicsJobs = true;
-            #else
+            #if VRC_DISABLE_GRAPHICS_JOBS
             PlayerSettings.graphicsJobs = false;
+            #else
+            PlayerSettings.graphicsJobs = true;
             #endif
 
             PlayerSettings.gpuSkinning = true;
+
+            PlayerSettings.legacyClampBlendShapeWeights = true;
 
             PlayerSettings.gcIncremental = true;
 
@@ -1027,6 +1110,9 @@ namespace VRC.Editor
                 AssetDatabase.CreateAsset(generalSettings, "Assets/XR/XRGeneralSettings.asset");
                 AssetDatabase.SaveAssets();
                 EditorBuildSettings.AddConfigObject(XRGeneralSettings.k_SettingsKey, generalSettings, true);
+                
+                // Re-retrieve the config object so it won't crash CreateDefaultSettingsForBuildTarget
+                EditorBuildSettings.TryGetConfigObject(XRGeneralSettings.k_SettingsKey, out generalSettings);
             }
             
             if(!generalSettings.HasSettingsForBuildTarget(BuildTargetGroup.Standalone))
@@ -1151,6 +1237,20 @@ namespace VRC.Editor
                 defines.Remove("VRC_SDK_VRCSDK3");
             }
 
+            // TODO remove once player persistence is enabled by default
+            if(assemblies.Any(assembly => assembly.GetType("VRC.SDK3.ClientSim.Persistence.ClientSimPlayerDataStorage") != null))
+            {
+                if(!defines.Contains("VRC_ENABLE_PLAYER_PERSISTENCE", StringComparer.OrdinalIgnoreCase))
+                {
+                    defines.Add("VRC_ENABLE_PLAYER_PERSISTENCE");
+                    definesChanged = true;
+                }
+            }
+            else if(defines.Contains("VRC_ENABLE_PLAYER_PERSISTENCE"))
+            {
+                defines.Remove("VRC_ENABLE_PLAYER_PERSISTENCE");
+            }
+            
             if(definesChanged)
             {
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, string.Join(";", defines.ToArray()));
@@ -1159,7 +1259,7 @@ namespace VRC.Editor
 
         private static void SetBuildTarget()
         {
-        VRC.Core.Logger.Log("Setting build target", VRC.Core.DebugLevel.All);
+        VRC.Core.Logger.Log("Setting build target", DebugCategoryName);
 
         BuildTarget target = UnityEditor.EditorUserBuildSettings.activeBuildTarget;
 

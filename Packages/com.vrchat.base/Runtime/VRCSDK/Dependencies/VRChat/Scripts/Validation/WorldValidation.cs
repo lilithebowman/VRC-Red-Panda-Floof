@@ -13,15 +13,15 @@ namespace VRC.SDKBase.Validation
 {
     public static class WorldValidation
     {
-        private static readonly Lazy<int> _debugLevel = new Lazy<int>(InitializeLogging);
-        private static int DebugLevel => _debugLevel.Value;
+        private static readonly Lazy<string> _debugCategoryName = new Lazy<string>(InitializeLogging);
+        private static string DebugCategoryName => _debugCategoryName.Value;
 
-        private static int InitializeLogging()
+        private static string InitializeLogging()
         {
-            int hashCode = typeof(WorldValidation).GetHashCode();
-            VRC.Core.Logger.DescribeDebugLevel(hashCode, "WorldValidation", VRC.Core.Logger.Color.red);
-            VRC.Core.Logger.AddDebugLevel(hashCode);
-            return hashCode;
+            const string categoryName = "WorldValidation";
+            VRC.Core.Logger.DescribeCategory(categoryName, VRC.Core.Logger.Color.red);
+            VRC.Core.Logger.EnableCategory(categoryName);
+            return categoryName;
         }
 
         static string[] ComponentTypeWhiteList = null;
@@ -424,9 +424,7 @@ namespace VRC.SDKBase.Validation
             "RenderHeads.Media.AVProVideo.MediaPlayer",
             "RenderHeads.Media.AVProVideo.SubtitlesUGUI",
             "AlphaButtonClickMask",
-            "EventSystemChecker",
-            "VirtualMarketplaceItem",
-            "SDK2UrlLauncher"
+            "EventSystemChecker"
         };
 
         static readonly string[] ComponentTypeWhiteListSdk3 = new string[]
@@ -444,14 +442,34 @@ namespace VRC.SDKBase.Validation
             "VRC.SDK3.Components.VRCObjectSync",
             "VRC.SDK3.Components.VRCObjectPool",
             "VRC.SDK3.Components.VRCInputFieldKeyboardOverride",
+#if VRC_ENABLE_PLAYER_PERSISTENCE
+            "VRC.SDK3.Components.VRCPlayerObject",
+#endif
+#if VRC_ENABLE_PLAYER_PERSISTENCE || VRC_ENABLE_INSTANCE_PERSISTENCE
+            "VRC.SDK3.Components.VRCEnablePersistence",
+#endif
             "VRC.SDK3.Video.Components.VRCUnityVideoPlayer",
             "VRC.SDK3.Video.Components.AVPro.VRCAVProVideoPlayer",
             "VRC.SDK3.Video.Components.AVPro.VRCAVProVideoScreen",
             "VRC.SDK3.Video.Components.AVPro.VRCAVProVideoSpeaker",
             "VRC.SDK3.Midi.VRCMidiListener",
             "VRC.SDK3.Midi.VRCMidiPlayer",
+            "VRC.SDK3.Components.VRCCameraDollyAnimation",
+            "VRC.SDK3.Components.VRCCameraDollyPath",
+            "VRC.SDK3.Components.VRCCameraDollyPathPoint",
             "VRC.Udon.UdonBehaviour",
             "VRC.Udon.AbstractUdonBehaviourEventProxy",
+            "VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBone",
+            "VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneCollider",
+            "VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneRoot",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCAimConstraint",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCLookAtConstraint",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCParentConstraint",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCPositionConstraint",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCRotationConstraint",
+            "VRC.SDK3.Dynamics.Constraint.Components.VRCScaleConstraint",
+            "VRC.SDK3.Dynamics.Contact.Components.VRCContactSender",
+            "VRC.SDK3.Dynamics.Contact.Components.VRCContactReceiver",
             "UnityEngine.Animations.AimConstraint",
             "UnityEngine.Animations.LookAtConstraint",
             "UnityEngine.Animations.ParentConstraint",
@@ -459,6 +477,10 @@ namespace VRC.SDKBase.Validation
             "UnityEngine.Animations.RotationConstraint",
             "UnityEngine.Animations.ScaleConstraint",
             "UnityEngine.ParticleSystemForceField",
+            "Unity.AI.Navigation.NavMeshSurface",
+            "Unity.AI.Navigation.NavMeshLink",
+            "Unity.AI.Navigation.NavMeshModifier",
+            "Unity.AI.Navigation.NavMeshModifierVolume",
             "Cinemachine.Cinemachine3rdPersonAim",
             "Cinemachine.CinemachineBlendListCamera",
             "Cinemachine.CinemachineBrain",
@@ -507,6 +529,7 @@ namespace VRC.SDKBase.Validation
             "VRChat/Mobile/Skybox",
             "VRChat/Mobile/Particles/Additive",
             "VRChat/Mobile/Particles/Multiply",
+            "VRChat/Mobile/World/Supersampled UI",
             "FX/MirrorReflection",
             "UI/Default",
         };
@@ -542,7 +565,7 @@ namespace VRC.SDKBase.Validation
         public static void RemoveIllegalComponents(List<GameObject> targets, WhiteListConfiguration config, bool retry = true, HashSet<Type> tagWhitelistedTypes = null)
         {
             ConfigureWhiteList(config);
-            
+
             HashSet<Type> whitelist = ValidationUtils.WhitelistedTypes($"world{config}", ComponentTypeWhiteList);
 
             // combine whitelist types from world tags with cached whitelist
@@ -550,7 +573,12 @@ namespace VRC.SDKBase.Validation
 
             foreach(GameObject target in targets)
             {
+#if VRC_CLIENT
                 ValidationUtils.RemoveIllegalComponents(target, tagWhitelistedTypes ?? whitelist, retry, true);
+#else
+                ValidationUtils.RemoveIllegalComponents(target, tagWhitelistedTypes ?? whitelist, retry, true, excludeEditorOnly:true, allowRemovingAssets:false);
+#endif
+
                 SecurityScan(target);
                 AddScanned(target);
 
@@ -596,7 +624,12 @@ namespace VRC.SDKBase.Validation
                 return;
             }
 
+#if VRC_CLIENT
             ValidationUtils.RemoveIllegalComponents(target, whitelist);
+#else
+            ValidationUtils.RemoveIllegalComponents(target, whitelist, excludeEditorOnly:true, allowRemovingAssets:false);
+#endif
+
             SecurityScan(target);
 #if VRC_CLIENT && UDON
             if (isSDK3)
@@ -619,7 +652,7 @@ namespace VRC.SDKBase.Validation
         [PublicAPI]
         public static IEnumerable<Shader> FindIllegalShaders(GameObject target)
         {
-            return ShaderValidation.FindIllegalShaders(target, ShaderWhiteList);
+            return ValidationUtils.FindIllegalShaders(target, ShaderWhiteList);
         }
 
         private static void SecurityScan(GameObject target)
@@ -655,7 +688,7 @@ namespace VRC.SDKBase.Validation
 
                 ScanGameObject(dropdownTemplate.transform.root.gameObject, whitelist, isSDK3);
             }
-            
+
             #if TextMeshPro
             TMP_Dropdown[] tmpDropdowns = target.GetComponentsInChildren<TMP_Dropdown>(true);
             foreach(TMP_Dropdown textMeshProDropdown in tmpDropdowns)
@@ -693,7 +726,7 @@ namespace VRC.SDKBase.Validation
                     if(clip.asset is ControlPlayableAsset controlPlayableAsset && controlPlayableAsset.prefabGameObject != null)
                     {
                         UnityEngine.Object.Destroy(playableDirector);
-                        VRC.Core.Logger.LogWarning("PlayableDirector containing prefab removed", DebugLevel, playableDirector.gameObject);
+                        VRC.Core.Logger.LogWarning("PlayableDirector containing prefab removed", DebugCategoryName, playableDirector.gameObject);
                     }
                 }
             }
@@ -703,7 +736,7 @@ namespace VRC.SDKBase.Validation
         {
             // VideoPlayer objects with output mode set to "Direct" bypass client volume controls.
 
-            if (videoPlayer.audioOutputMode == UnityEngine.Video.VideoAudioOutputMode.Direct) 
+            if (videoPlayer.audioOutputMode == UnityEngine.Video.VideoAudioOutputMode.Direct)
             {
                 //if playback is happening (or will) you have to Stop() before you attach an AudioSource.
                 bool play_state = (videoPlayer.isPlaying || videoPlayer.playOnAwake);
@@ -718,7 +751,7 @@ namespace VRC.SDKBase.Validation
                 {
                     videoPlayer.SetTargetAudioSource(i,vp_src);
                 }
-                
+
                 if (play_state)
                 {
                     videoPlayer.Play();

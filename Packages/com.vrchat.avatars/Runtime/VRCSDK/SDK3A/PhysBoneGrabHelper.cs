@@ -1,18 +1,19 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
 using VRC.Dynamics;
-using UnityEditor;
-using System.Reflection;
 
 namespace VRC.SDK3.Dynamics.PhysBone
 {
+    /// <summary>
+    /// Internal component that makes it possible to grab and pose PhysBones for testing in an SDK project while it's
+    /// in play mode.
+    /// </summary>
+    // This component is intentionally duplicated across SDKs instead of existing in the base SDK only, to address
+    // compatibility issues with community made tooling.
     [AddComponentMenu("")]
     public class PhysBoneGrabHelper : MonoBehaviour
     {
         Camera currentCamera;
-
-        System.Type gameViewType;
-        FieldInfo targetDisplayField;
 
         void Update()
         {
@@ -30,28 +31,22 @@ namespace VRC.SDK3.Dynamics.PhysBone
             }
             UpdateGrab();
         }
-        void Start()
-        {
-            var assembly = typeof(EditorWindow).Assembly;
-            gameViewType = assembly.GetType("UnityEditor.PlayModeView");
-            targetDisplayField = gameViewType.GetField("m_TargetDisplay", BindingFlags.DeclaredOnly | BindingFlags.NonPublic | BindingFlags.Instance);
-        }
 
-        //In Unity 2021.2 this can be replaced with Display.activeEditorGameViewTarget, allowing us to remove all dependencies on UnityEditor
         Camera FindCamera()
         {
             //Get target display
-            var gameView = UnityEditor.EditorWindow.focusedWindow;
-            if(gameView == null || !gameViewType.IsInstanceOfType(gameView))
-                return null;
-            var targetDisplay = (int)targetDisplayField.GetValue(gameView);
+            int targetDisplay = Display.activeEditorGameViewTarget;
 
             //Find camera with matching target
             Camera result = null;
             var cameras = Camera.allCameras;
             foreach(var camera in cameras) //Get the last active camera
             {
-                if(camera.isActiveAndEnabled && camera.targetDisplay == targetDisplay)
+                if (camera.isActiveAndEnabled &&
+                    camera.cameraType == CameraType.Game &&
+                    camera.targetDisplay == targetDisplay &&
+                    camera.targetTexture == null
+                   )
                     result = camera;
             }
             return result;
@@ -59,7 +54,7 @@ namespace VRC.SDK3.Dynamics.PhysBone
 
         bool mouseIsDown = false;
         PhysBoneManager.Grab grab;
-        Vector3 grabOrigin;
+        Vector3 grabOriginLocal;
         void SetMouseDown(bool state)
         {
             if (state == mouseIsDown)
@@ -67,16 +62,19 @@ namespace VRC.SDK3.Dynamics.PhysBone
 
             mouseIsDown = state;
 
-            if (mouseIsDown)
+            if (mouseIsDown && currentCamera != null)
             {
+                var localPlayer = VRC.SDKBase.Networking.LocalPlayer;
+                var playerId = localPlayer != null && localPlayer.IsValid() ? localPlayer.playerId : -1;
                 var ray = GetMouseRay();
-                grab = PhysBoneManager.Inst.AttemptGrab(-1, ray, out grabOrigin);
-                #if VERBOSE_LOGGING
+                grab = PhysBoneManager.Inst.AttemptGrab(playerId, ray, out Vector3 grabOrigin);
                 if (grab != null)
                 {
+                    grabOriginLocal = currentCamera.transform.InverseTransformPoint(grabOrigin);
+                    #if VERBOSE_LOGGING
                     Debug.Log($"Grabbing - Chain:{grab.chainId} Bone:{grab.bone}");
+                    #endif
                 }
-                #endif
             }
             else
             {
@@ -89,10 +87,7 @@ namespace VRC.SDK3.Dynamics.PhysBone
         }
         Ray GetMouseRay()
         {
-            if(currentCamera != null)
-                return currentCamera.ScreenPointToRay(Input.mousePosition);
-            else
-                return default;
+            return currentCamera.ScreenPointToRay(Input.mousePosition);
         }
         void UpdateGrab()
         {
@@ -101,11 +96,12 @@ namespace VRC.SDK3.Dynamics.PhysBone
 
             if (grab != null)
             {
+                Vector3 curGrabOrigin = currentCamera.transform.TransformPoint(grabOriginLocal);
                 var ray = GetMouseRay();
                 Vector3 hit;
-                if (PlaneLineIntersection(grabOrigin, -currentCamera.transform.forward, ray.origin, ray.origin + ray.direction * 1000f, out hit))
+                if (PlaneLineIntersection(curGrabOrigin, -currentCamera.transform.forward, ray.origin, ray.origin + ray.direction * 1000f, out hit))
                 {
-                    grab.globalPosition = hit + (Vector3)grab.localOffset;
+                    grab.GlobalPosition = hit + grab.LocalOffset;
                 }
             }
         }

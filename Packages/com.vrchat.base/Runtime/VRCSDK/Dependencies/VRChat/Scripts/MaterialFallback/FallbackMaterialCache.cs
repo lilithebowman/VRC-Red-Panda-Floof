@@ -14,7 +14,9 @@ public class FallbackMaterialCache
         }
         else
         {
+#pragma warning disable RS0030 // Banned APIs
             Debug.LogError($"Attempted to add a duplicate fallback material '{fallbackMaterial.name}' for original material '{material.name}'.");
+#pragma warning restore RS0030
         }
     }
 
@@ -34,7 +36,14 @@ public class FallbackMaterialCache
         Material[] cachedFallbackMaterials = _fallbackMaterialCache.Values.ToArray();
         for(int i = cachedFallbackMaterials.Length - 1; i >= 0; i--)
         {
-            Object.Destroy(cachedFallbackMaterials[i]);
+            if (Application.isPlaying)
+            {
+                Object.Destroy(cachedFallbackMaterials[i]);
+            }
+            else
+            {
+                Object.DestroyImmediate(cachedFallbackMaterials[i]);
+            }
         }
 
         _fallbackMaterialCache.Clear();

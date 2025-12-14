@@ -11,8 +11,10 @@ namespace VRC.SDK3A.Editor
     {
         private const string avatarsReimportedKey = "AVATARS_REIMPORTED";
         
-        private const string exampleScenePath =
-            "Packages/com.vrchat.avatars/Samples/Dynamics/Robot Avatar/Avatar Dynamics Robot Avatar.unity";
+        private const string exampleScenePathPC =
+            "Packages/com.vrchat.avatars/Samples/Dynamics/Robot Avatar/Avatar Dynamics Robot Avatar PC.unity";
+        private const string exampleScenePathAndroid =
+            "Packages/com.vrchat.avatars/Samples/Dynamics/Robot Avatar/Avatar Dynamics Robot Avatar Android.unity";
 
         static SDK3AImportFix()
         {
@@ -35,12 +37,21 @@ namespace VRC.SDK3A.Editor
             }
         }
 
-        [MenuItem("VRChat SDK/Samples/Avatar Dynamics Robot Avatar")]
-        private static void OpenAvatarsExampleScene()
+        [MenuItem("VRChat SDK/Samples/Avatar Dynamics Robot Avatar PC", false, 990)]
+        private static void OpenAvatarsExampleScenePC()
         {
             if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
-                EditorSceneManager.OpenScene(exampleScenePath);
+                EditorSceneManager.OpenScene(exampleScenePathPC);
+            }
+        }
+        
+        [MenuItem("VRChat SDK/Samples/Avatar Dynamics Robot Avatar Android", false, 991)]
+        private static void OpenAvatarsExampleSceneAndroid()
+        {
+            if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                EditorSceneManager.OpenScene(exampleScenePathAndroid);
             }
         }
 

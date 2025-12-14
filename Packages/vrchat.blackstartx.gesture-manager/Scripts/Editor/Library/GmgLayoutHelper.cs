@@ -5,7 +5,7 @@ using BlackStartX.GestureManager.Editor.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackStartX.GestureManager.Editor.Lib
+namespace BlackStartX.GestureManager.Editor.Library
 {
     public static class GmgLayoutHelper
     {
@@ -16,7 +16,7 @@ namespace BlackStartX.GestureManager.Editor.Lib
         {
             private GUIContent[] _contents;
 
-            public GUIContent[] Contents(IEnumerable<(string, Action)> field) => _contents ?? (_contents = field.Select(tuple => new GUIContent(tuple.Item1)).ToArray());
+            public GUIContent[] Contents(IEnumerable<(string, Action)> field) => _contents ??= field.Select(tuple => new GUIContent(tuple.Item1)).ToArray();
             public int Selected;
         }
 
@@ -34,7 +34,7 @@ namespace BlackStartX.GestureManager.Editor.Lib
 
         private static void GuiLabel(Color? color, string text, GUIStyle style = null, params GUILayoutOption[] options)
         {
-            style = style ?? GUI.skin.label;
+            style ??= GUI.skin.label;
             if (color != null)
             {
                 var textColor = GUI.contentColor;
@@ -76,7 +76,7 @@ namespace BlackStartX.GestureManager.Editor.Lib
             }
         }
 
-        public static bool UnityFieldEnterListener<T1, T2>(T1 initialText, T2 argument, Rect rect, Func<Rect, T1, T1> field, Action<T2, T1> onEscape, string controlName)
+        public static bool UnityFieldEnterListener<T1, T2>(T1 initialText, T2 argument, Rect rect, Func<Rect, T1, T1> field, Action<T2, T1, object> onEscape, string controlName)
         {
             if (_unityFieldEnterListenerName != controlName) _unityFieldEnterListenerData = null;
             var isEnter = Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter;
@@ -84,9 +84,9 @@ namespace BlackStartX.GestureManager.Editor.Lib
             _unityFieldEnterListenerName = controlName;
             GUI.SetNextControlName(controlName);
             GUI.FocusControl(controlName);
-            if (_unityFieldEnterListenerData == null) _unityFieldEnterListenerData = initialText;
+            _unityFieldEnterListenerData ??= initialText;
             var t = field(rect, _unityFieldEnterListenerData is T1 d ? d : default);
-            if (isEnter) onEscape(argument, _unityFieldEnterListenerData is T1 data ? data : default);
+            if (isEnter) onEscape(argument, _unityFieldEnterListenerData is T1 data ? data : default, null);
             else _unityFieldEnterListenerData = t;
             if (!isEnter && !isEscape) return false;
             _unityFieldEnterListenerData = null;
@@ -284,6 +284,15 @@ namespace BlackStartX.GestureManager.Editor.Lib
             Undo.RecordObject(o, EventName);
             EditorUtility.SetDirty(o);
             return descriptor;
+        }
+
+        public static T EnumPopup<T>(string label, T flag, UnityEngine.Object o) where T : Enum
+        {
+            var newFlag = (T)EditorGUILayout.EnumPopup(label, flag);
+            if (Equals(flag, newFlag)) return flag;
+            Undo.RecordObject(o, EventName);
+            EditorUtility.SetDirty(o);
+            return newFlag;
         }
 
         public static int Popup(string label, int index, string[] choose, UnityEngine.Object o)

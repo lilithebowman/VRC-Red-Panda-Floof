@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BlackStartX.GestureManager.Data;
 using BlackStartX.GestureManager.Editor.Data;
-using BlackStartX.GestureManager.Editor.Lib;
+using BlackStartX.GestureManager.Editor.Library;
 using UnityEditor;
 using UnityEditor.Profiling;
 using UnityEditorInternal;
@@ -20,25 +20,25 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
         private static bool CameraRule(Camera camera) => camera.enabled && camera.gameObject.activeInHierarchy;
 
         private UpdateSceneCamera _sceneCamera;
-        public UpdateSceneCamera SceneCamera => _sceneCamera ?? (_sceneCamera = new UpdateSceneCamera());
+        public UpdateSceneCamera SceneCamera => _sceneCamera ??= new UpdateSceneCamera();
 
         private ClickableContacts _clickableContacts;
-        public ClickableContacts ContactsClickable => _clickableContacts ?? (_clickableContacts = new ClickableContacts());
+        public ClickableContacts ContactsClickable => _clickableContacts ??= new ClickableContacts();
 
         private AvatarPose _avatarPose;
-        public AvatarPose PoseAvatar => _avatarPose ?? (_avatarPose = new AvatarPose());
+        public AvatarPose PoseAvatar => _avatarPose ??= new AvatarPose();
 
         private AvatarBackground _avatarBackground;
-        private AvatarBackground BackgroundAvatar => _avatarBackground ?? (_avatarBackground = new AvatarBackground());
+        private AvatarBackground BackgroundAvatar => _avatarBackground ??= new AvatarBackground();
 
         private TestAnimation _testAnimation;
-        private TestAnimation AnimationTest => _testAnimation ?? (_testAnimation = new TestAnimation());
+        private TestAnimation AnimationTest => _testAnimation ??= new TestAnimation();
 
         private AnimatorPerformance _animatorPerformance;
-        public AnimatorPerformance PerformanceAnimator => _animatorPerformance ?? (_animatorPerformance = new AnimatorPerformance());
+        public AnimatorPerformance PerformanceAnimator => _animatorPerformance ??= new AnimatorPerformance();
 
         private Customization _customization;
-        private Customization CustomizationTool => _customization ?? (_customization = new Customization());
+        private Customization CustomizationTool => _customization ??= new Customization();
 
         // This is silly but otherwise Rider will prompt casting hints on screen... I hate those more~
         private static bool Exist(UnityEngine.Object uObject) => !NExist(uObject);
@@ -83,7 +83,7 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
         public class UpdateSceneCamera : GmgDynamicFunction
         {
             private static Camera _camera;
-            private static readonly BoolProperty IsActive = new BoolProperty("GM3 SceneCamera");
+            private static readonly BoolProperty IsActive = new("GM3 SceneCamera");
 
             protected internal override string Name => "Scene Camera";
             protected override string Description => "This will match your game view with your scene view!\n\nClick the button to setup the main camera automatically~";
@@ -132,9 +132,9 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
                 public float Float;
             }
 
-            private readonly BoolProperty _isActive = new BoolProperty("GM3 ClickableContacts");
-            private readonly StringProperty _tag = new StringProperty("GM3 ClickableContacts Tag");
-            private readonly Dictionary<ContactReceiver, Flat> _activeContact = new Dictionary<ContactReceiver, Flat>();
+            private readonly BoolProperty _isActive = new("GM3 ClickableContacts");
+            private readonly StringProperty _tag = new("GM3 ClickableContacts Tag");
+            private readonly Dictionary<ContactReceiver, Flat> _activeContact = new();
 
             protected internal override string Name => "Clickable Contacts";
             protected override string Description => "Click and trigger Avatar Contacts with your mouse!\n\nLike you can do with PhysBones~";
@@ -223,40 +223,47 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
 
             private static IEnumerable<UnityEngine.Object> Resources => AssetDatabase.LoadAllAssetsAtPath("Library/unity default resources");
 
+            private bool IsValid(ContactReceiver receiver) => receiver.isActiveAndEnabled && string.IsNullOrEmpty(_tag.Property) || receiver.collisionTags.Contains(_tag.Property);
+
             /*
              * RayCast Calculation~
              */
 
-            private void CheckRay(ModuleVrc3 module, Vector3 s, Vector3 e)
+            private void CheckRay(ModuleVrc3 module, Vector3 s, Vector3 b)
             {
-                var manager = ContactManager.Inst;
-                if (!manager) return;
-                foreach (var receiver in module.Receivers.Where(receiver => string.IsNullOrEmpty(_tag.Property) || receiver.collisionTags.Contains(_tag.Property))) OnContactValue(receiver, ValueFor(manager, receiver, s, e));
+                foreach (var receiver in module.Receivers.Where(IsValid))
+                    OnContactValue(receiver, ValueFor(receiver, s, b));
             }
 
-            private static float ValueFor(ContactManager manager, ContactReceiver receiver, Vector3 s, Vector3 e)
+            private static float ValueFor(ContactReceiver receiver, Vector3 s, Vector3 b)
             {
+                var distance = DistanceFrom(receiver, s, b, out var radius);
                 var isProximity = receiver.receiverType == ContactReceiver.ReceiverType.Proximity;
-                var distance = DistanceFrom(manager, receiver, s, e, out var radius);
-                if (isProximity) distance -= radius;
-                if (isProximity) return Mathf.Clamp(-distance / radius, 0f, 1f);
-                return distance < 0 ? 1f : 0f;
+                return isProximity ? Mathf.Clamp01((radius - distance) / radius) : distance < 0 ? 1f : 0f;
             }
 
-            private static float DistanceFrom(ContactManager manager, ContactBase receiver, Vector3 s, Vector3 e, out float radius)
+            private static float DistanceFrom(ContactBase receiver, Vector3 s, Vector3 b, out float radius)
             {
                 receiver.InitShape();
-                manager.collision.UpdateShapeData(receiver.shape);
-                var shape = manager.collision.GetShapeData(receiver.shape);
-                var scaleVector = receiver.transform.lossyScale;
-                radius = receiver.radius * Mathf.Max(scaleVector.x, scaleVector.y, scaleVector.z);
-                var vectorLine = receiver.shapeType == ContactBase.ShapeType.Sphere ? shape.outPos0 : shape.outPos1;
-                ClosestPointsBetweenLineSegments(s, e, shape.outPos0, vectorLine, out var vector0, out var vector1);
+                var vector = receiver.transform.lossyScale;
+                var scale = Mathf.Max(vector.x, vector.y, vector.z);
+                GetShapeData(receiver.shape, receiver.transform, scale, out radius, out var aPointVector, out var bPointVector);
+                ClosestPointsBetweenLineSegments(s, b, aPointVector, bPointVector, out var vector0, out var vector1);
                 return (vector0 - vector1).magnitude - radius;
             }
 
+            private static void GetShapeData(CollisionScene.Shape shape, Transform transform, float scale, out float radius, out Vector3 aPointFloat, out Vector3 bPointFloat)
+            {
+                var cVector = shape.center * scale;
+                radius = Mathf.Min(shape.radius * scale, shape.maxSize * 0.5f);
+                var isSphere = shape.shapeType == CollisionScene.ShapeType.Sphere;
+                var aVector = isSphere ? Vector3.zero : CapsuleVector(shape, scale, radius);
+                aPointFloat = transform.position + transform.rotation * (cVector - aVector);
+                bPointFloat = transform.position + transform.rotation * (cVector + aVector);
+            }
+
             /*
-             * Saved from the Plugins\VRC.Utility.dll before being obliterate in future versions of the library~ :c
+             * Saved from the Plugins\VRC.Utility.dll before being obliterated in future versions of the library~ :c
              *
              * This poor function will not be forgotten~
              */
@@ -274,10 +281,9 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
                 return ClosestPointOnLineSegment(lineA, lineB, rhsVector, Vector3.Dot(lhsVector, rhsVector));
             }
 
-            private static Vector3 ClosestPointOnLineSegment(Vector3 lineA, Vector3 lineB, Vector3 lhsRhs, float dot1)
-            {
-                return dot1 <= 0.0 ? lineA : ClosestPointOnLineSegment(lineA, lineB, lhsRhs, dot1, Vector3.Dot(lhsRhs, lhsRhs));
-            }
+            private static Vector3 ClosestPointOnLineSegment(Vector3 lineA, Vector3 lineB, Vector3 lhsRhs, float dot1) => dot1 <= 0.0 ? lineA : ClosestPointOnLineSegment(lineA, lineB, lhsRhs, dot1, Vector3.Dot(lhsRhs, lhsRhs));
+
+            private static Vector3 CapsuleVector(CollisionScene.Shape shape, float scale, float radius) => shape.axis * Mathf.Max(0.0f, Mathf.Min(shape.height * scale, shape.maxSize) * 0.5f - radius);
 
             private static Vector3 ClosestPointOnLineSegment(Vector3 lineA, Vector3 lineB, Vector3 lhsRhs, float dot1, float dot) => dot <= dot1 ? lineB : lineA + lhsRhs * (dot1 / dot);
         }
@@ -301,6 +307,8 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
             protected internal override void Toggle(ModuleVrc3 module)
             {
                 _poseMode = module.PoseMode = !module.PoseMode;
+                if (_poseMode) module.TryAddWarning(_poseWarning);
+                else module.TryRemoveWarning(_poseWarning);
                 module.AvatarAnimator.applyRootMotion = _poseMode;
                 if (!_poseMode || module.DummyMode == null) return;
                 module.SavePose(module.DummyMode.Animator);
@@ -310,6 +318,8 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
                 module.SetPose(module.AvatarAnimator);
                 data.AddTo(transform);
             }
+
+            private readonly Vrc3Warning _poseWarning = new("You are in Pose-Mode!", "You can pose your avatar but the animations of your bones are disabled!", false);
         }
 
         private class AvatarBackground : GmgDynamicFunction
@@ -432,25 +442,29 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
 
         public class AnimatorPerformance : GmgDynamicFunction
         {
-            private List<int> _cachedIds = new List<int>();
+            private readonly List<int> _cachedIds = new();
+            private readonly List<(int id, string name)> _idsNames = new();
+            private static readonly Dictionary<int, string> MarkerIds = new();
+            private static int _playerLoopMarkerId;
+            private const string PlayerLoopName = "PlayerLoop";
 
-            private Dictionary<string, Benchmark> _benchmark = new Dictionary<string, Benchmark>();
-            private static string PropertyName => "Animators.Update";
+            private Dictionary<string, Benchmark> _benchmark = MarkerNames.ToDictionary(nString => nString, _ => new Benchmark());
+
+            private static readonly string[] MarkerNames =
+            {
+                "Update.DirectorUpdate",
+                "PreLateUpdate.DirectorUpdateAnimationBegin",
+                "PreLateUpdate.DirectorUpdateAnimationEnd"
+            };
+
             protected internal override string Name => "Animator Performance";
             protected override string Description => "A simple benchmark using the Unity Profiler!\n\nAimed to show animator update calls usages!";
             protected internal override bool Active => Profiler.enabled;
             public bool Watching => Active && Foldout;
-            private Dictionary<string, Benchmark> Benchmarks => _benchmark.Count == 0 ? _dummyBenchmark : _benchmark;
-
-            private readonly Dictionary<string, Benchmark> _dummyBenchmark = new Dictionary<string, Benchmark>
-            {
-                { "Dummy1", new Benchmark() },
-                { "Dummy2", new Benchmark() }
-            };
 
             private const int Thread = 0;
             private const int Column = HierarchyFrameDataView.columnName;
-            private const HierarchyFrameDataView.ViewModes View = HierarchyFrameDataView.ViewModes.Default;
+            private const HierarchyFrameDataView.ViewModes View = HierarchyFrameDataView.ViewModes.MergeSamplesWithTheSameName;
             private const bool SortAscending = true;
 
             protected override void Gui(ModuleVrc3 module)
@@ -459,8 +473,13 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
                 using (new GUILayout.VerticalScope(EditorStyles.helpBox))
                 using (new GmgLayoutHelper.GuiEnabled(Active))
                 {
-                    GUILayout.Label(PropertyName, GestureManagerStyles.MiddleStyle);
-                    foreach (var benchmarkPair in Benchmarks) benchmarkPair.Value.Render();
+                    foreach (var benchmarkPair in _benchmark)
+                    {
+                        GUILayout.Label(benchmarkPair.Key, GestureManagerStyles.MiddleStyle);
+                        benchmarkPair.Value.Render();
+                        GUILayout.Space(10);
+                    }
+
                     GUILayout.Label($"\n[Result calculated on {_benchmark.FirstOrDefault().Value?.Frame ?? 0} frames]");
                 }
 
@@ -474,28 +493,44 @@ namespace BlackStartX.GestureManager.Editor.Modules.Vrc3.Tools
 
             protected override void Update(ModuleVrc3 module)
             {
-                using (var frameData = ProfilerDriver.GetHierarchyFrameDataView(ProfilerDriver.lastFrameIndex, Thread, View, Column, SortAscending))
+                CacheMarkerIds();
+                using var frameData = ProfilerDriver.GetHierarchyFrameDataView(ProfilerDriver.lastFrameIndex, Thread, View, Column, SortAscending);
+                GetIds(frameData);
+                foreach (var (intId, name) in _idsNames)
                 {
-                    var idList = GetCachedIds(frameData);
-                    foreach (var intId in idList)
-                    {
-                        var dString = frameData.GetItemPath(intId);
-                        if (!_benchmark.ContainsKey(dString)) _benchmark[dString] = new Benchmark();
-                        _benchmark[dString].Record(frameData.GetItemColumnDataAsFloat(intId, HierarchyFrameDataView.columnSelfTime));
-                    }
+                    if (!_benchmark.TryGetValue(name, out var benchmark)) benchmark = _benchmark[name] = new Benchmark();
+                    benchmark.Record(frameData.GetItemColumnDataAsFloat(intId, HierarchyFrameDataView.columnTotalTime));
                 }
             }
 
-            private List<int> GetCachedIds(HierarchyFrameDataView frameData)
+            private static void CacheMarkerIds()
             {
-                if (_cachedIds.Count != 0 && _cachedIds.All(intId => frameData.GetItemName(intId) == PropertyName)) return _cachedIds;
-                frameData.GetItemDescendantsThatHaveChildren(frameData.GetRootItemID(), _cachedIds);
-                _cachedIds = _cachedIds
-                    .Select(intId => (intId, frameData.GetItemName(intId)))
-                    .Where(tuple => tuple.Item2.Equals(PropertyName))
-                    .Select(tuple => tuple.intId)
-                    .ToList();
-                return _cachedIds;
+                if (MarkerIds.Count != 0) return;
+                using var frameData = ProfilerDriver.GetRawFrameDataView(ProfilerDriver.lastFrameIndex, Thread);
+                _playerLoopMarkerId = frameData.GetMarkerId(PlayerLoopName);
+                foreach (var name in MarkerNames) MarkerIds.Add(frameData.GetMarkerId(name), name);
+            }
+
+            private void GetIds(HierarchyFrameDataView frameData)
+            {
+                frameData.GetItemChildren(frameData.GetRootItemID(), _cachedIds);
+                var playerIntId = _cachedIds.FirstOrDefault(intId => frameData.GetItemMarkerID(intId) == _playerLoopMarkerId);
+
+                _idsNames.Clear();
+                var found = 0;
+                frameData.GetItemChildren(playerIntId, _cachedIds);
+                for (var jInt = _cachedIds.Count - 1; jInt >= 0; jInt--)
+                {
+                    var markerInt = frameData.GetItemMarkerID(_cachedIds[jInt]);
+                    if (MarkerIds.TryGetValue(markerInt, out var name))
+                    {
+                        var intId = _cachedIds[jInt];
+                        _idsNames.Add((intId, name));
+                        found++;
+                    }
+
+                    if (found == MarkerNames.Length) return;
+                }
             }
 
             protected internal override void Toggle(ModuleVrc3 module)

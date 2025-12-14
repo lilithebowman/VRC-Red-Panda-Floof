@@ -14,15 +14,15 @@ namespace BlackStartX.GestureManager.Data
     public abstract class ModuleBase
     {
         private List<HumanBodyBones> _bones;
-        private List<HumanBodyBones> Bones => _bones ?? (_bones = PoseBones);
+        private List<HumanBodyBones> Bones => _bones ??= PoseBones;
         public string Name => Avatar != null ? Avatar.name : null;
 
-        private readonly Dictionary<HumanBodyBones, (Vector3, Quaternion)> _poseBones = new Dictionary<HumanBodyBones, (Vector3, Quaternion)>();
+        private readonly Dictionary<HumanBodyBones, (Vector3, Quaternion)> _poseBones = new();
 
         private readonly GmgAvatarDescriptor _avatarDescriptor;
 
-        private List<string> _errorList = new List<string>();
-        private List<string> _warningList = new List<string>();
+        private List<string> _errorList = new();
+        private List<string> _warningList = new();
 
         public readonly GameObject Avatar;
         public readonly Animator AvatarAnimator;
@@ -54,18 +54,21 @@ namespace BlackStartX.GestureManager.Data
         protected abstract void OnNewLeft(int left);
         protected abstract void OnNewRight(int right);
         public abstract string GetGestureTextNameByIndex(int gestureIndex);
-        public abstract bool HasGestureBeenOverridden(int gesture);
         protected abstract Animator OnCustomAnimationPlay(AnimationClip clip);
         protected abstract List<HumanBodyBones> PoseBones { get; }
 
         public virtual bool IsInvalid() => !Avatar || !AvatarAnimator || !_avatarDescriptor;
 
-        protected virtual List<string> CheckWarnings() => new List<string>();
+        protected virtual List<string> CheckWarnings()
+        {
+            var warnings = new List<string>();
+            if (GestureManager.ControlledAvatars.ContainsKey(Avatar)) warnings.Add("- The avatar is already controlled by another Gesture Manager!");
+            return warnings;
+        }
 
         protected virtual List<string> CheckErrors()
         {
             var errors = new List<string>();
-            if (GestureManager.ControlledAvatars.ContainsKey(Avatar)) errors.Add("- The avatar is already controlled by another Gesture Manager!");
             if (!Avatar) errors.Add("- The GameObject has been deleted!");
             else if (!Avatar.activeInHierarchy) errors.Add("- The GameObject is disabled!");
             if (!AvatarAnimator) errors.Add("- The model doesn't have any animator!");

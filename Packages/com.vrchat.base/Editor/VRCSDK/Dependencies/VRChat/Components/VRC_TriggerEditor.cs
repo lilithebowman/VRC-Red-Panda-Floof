@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using UnityEditorInternal;
+#if VRC_CLIENT
+using ZLinq;
+#else
 using System.Linq;
+#endif
 using System.Collections.Generic;
 using System.Reflection;
 using System;
@@ -1402,8 +1406,8 @@ namespace VRCSDK2
             if (methods.Count == 0)
                 return;
 
-            List<string> combined = methods
-                .Select(pair => pair.Value.Select(s => pair.Key + "." + s.Name))
+            var combined = methods
+                .Select(pair => pair.Value.Select(s => pair.Key + "." + s.Name).ToList())
                 .Aggregate((a, b) =>
                 {
                     var v = new List<string>();
