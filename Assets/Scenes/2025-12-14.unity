@@ -272,6 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2585338655472771634, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8498586deee4bf24ba99af08b45ca8c0, type: 2}
+    - target: {fileID: -2585338655472771634, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
+        type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 26
       objectReference: {fileID: 0}
@@ -308,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -744,7 +749,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 0
+  fallbackStatus: 3
 --- !u!137 &692310369 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: 1d08db6adaedcb64eb6c6d58b9d044cd,
@@ -799,6 +804,7 @@ MonoBehaviour:
   integrationType: 0
   rootTransform: {fileID: 692310372}
   ignoreTransforms: []
+  ignoreOtherPhysBones: 0
   endpointPosition: {x: 0, y: 0, z: 0}
   multiChildType: 0
   pull: 0.2
@@ -848,6 +854,7 @@ MonoBehaviour:
   collisionFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   radius: 0.0015
   radiusCurve:
     serializedVersion: 2
@@ -896,10 +903,12 @@ MonoBehaviour:
   grabFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   allowPosing: 1
   poseFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   snapToHand: 0
   grabMovement: 0.5
   maxStretch: 0
@@ -949,6 +958,7 @@ MonoBehaviour:
   position: {x: 0, y: -0.25, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   bonesAsSpheres: 0
+  globalCollisionFlags: 0
 --- !u!137 &712670191 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2585338655472771634, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
@@ -1287,7 +1297,7 @@ MonoBehaviour:
   blueprintId: avtr_d0d387c8-e9c4-4245-a7c1-ec64730eed3e
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 3
+  fallbackStatus: 0
 --- !u!114 &732679699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,7 +1336,7 @@ MonoBehaviour:
   - ih
   - oh
   - ou
-  unityVersion: 2019.4.31f1
+  unityVersion: 2022.3.22f1
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   networkIDs: []
@@ -1636,6 +1646,7 @@ MonoBehaviour:
   integrationType: 0
   rootTransform: {fileID: 732679721}
   ignoreTransforms: []
+  ignoreOtherPhysBones: 0
   endpointPosition: {x: 0, y: 0, z: 0}
   multiChildType: 0
   pull: 0.2
@@ -1685,6 +1696,7 @@ MonoBehaviour:
   collisionFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   radius: 0.0015
   radiusCurve:
     serializedVersion: 2
@@ -1733,10 +1745,12 @@ MonoBehaviour:
   grabFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   allowPosing: 1
   poseFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   snapToHand: 1
   grabMovement: 1
   maxStretch: 1000
@@ -1812,6 +1826,7 @@ MonoBehaviour:
   - {fileID: 732679702}
   - {fileID: 732679712}
   - {fileID: 732679711}
+  ignoreOtherPhysBones: 0
   endpointPosition: {x: 0, y: 0, z: 0}
   multiChildType: 0
   pull: 0.2
@@ -1861,6 +1876,7 @@ MonoBehaviour:
   collisionFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   radius: 0.0005
   radiusCurve:
     serializedVersion: 2
@@ -1907,10 +1923,12 @@ MonoBehaviour:
   grabFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   allowPosing: 1
   poseFilter:
     allowSelf: 1
     allowOthers: 1
+    contentTypes: -1
   snapToHand: 0
   grabMovement: 0.5
   maxStretch: 0
@@ -1960,6 +1978,7 @@ MonoBehaviour:
   position: {x: 0, y: -0.25, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   bonesAsSpheres: 0
+  globalCollisionFlags: 0
 --- !u!4 &732679711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3551960246506442466, guid: 4bf6e21b9eb2bbd4b890a9c46f021e3a,
@@ -2004,6 +2023,7 @@ MonoBehaviour:
   position: {x: 0, y: 0.0015, z: 0.001}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   bonesAsSpheres: 0
+  globalCollisionFlags: 0
 --- !u!1 &1142123814
 GameObject:
   m_ObjectHideFlags: 0

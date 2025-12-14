@@ -9,11 +9,11 @@ C:\Program Files\Unity 2022.3.22f1\Editor\Unity.exe
 -batchMode
 -noUpm
 -name
-AssetImportWorker1
+AssetImportWorker5
 -projectPath
 C:/source/VRC-Red-Panda-Floof
 -logFile
-Logs/AssetImportWorker1.log
+Logs/AssetImportWorker5.log
 -srvPort
 49982
 Successfully changed project path to: C:/source/VRC-Red-Panda-Floof
@@ -49,13 +49,13 @@ C:/source/VRC-Red-Panda-Floof
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [43240] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 1097315669 [EditorId] 1097315669 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [44528] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 1094567455 [EditorId] 1094567455 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [43240] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 1097315669 [EditorId] 1097315669 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [44528] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 1094567455 [EditorId] 1094567455 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
-Refreshing native plugins compatible for Editor in 38.26 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 1.41 ms.
+Refreshing native plugins compatible for Editor in 33.29 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 1.92 ms.
 Initialize engine version: 2022.3.22f1 (887be4894c44)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.3.22f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/source/VRC-Red-Panda-Floof/Assets
@@ -70,48 +70,48 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56656
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56012
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006177 seconds.
-- Loaded All Assemblies, in  0.281 seconds
+Registered in 0.010458 seconds.
+- Loaded All Assemblies, in  0.449 seconds
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.269 seconds
-Domain Reload Profiling: 549ms
-	BeginReloadAssembly (84ms)
+- Finished resetting the current domain, in  0.371 seconds
+Domain Reload Profiling: 819ms
+	BeginReloadAssembly (143ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (46ms)
-	LoadAllAssembliesAndSetupDomain (116ms)
-		LoadAssemblies (83ms)
+		CreateAndSetChildDomain (5ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (76ms)
+	LoadAllAssembliesAndSetupDomain (163ms)
+		LoadAssemblies (137ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (114ms)
-			TypeCache.Refresh (112ms)
-				TypeCache.ScanAssembly (102ms)
+		AnalyzeDomain (161ms)
+			TypeCache.Refresh (159ms)
+				TypeCache.ScanAssembly (147ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (270ms)
+	FinalizeReload (372ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (223ms)
+		SetupLoadedEditorAssemblies (311ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (87ms)
-			SetLoadedEditorAssemblies (3ms)
+			InitializePlatformSupportModulesInManaged (127ms)
+			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (92ms)
-			ProcessInitializeOnLoadMethodAttributes (39ms)
+			ProcessInitializeOnLoadAttributes (123ms)
+			ProcessInitializeOnLoadMethodAttributes (53ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -119,8 +119,8 @@ Domain Reload Profiling: 549ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.611 seconds
-Refreshing native plugins compatible for Editor in 13.68 ms, found 6 plugins.
+- Loaded All Assemblies, in  1.516 seconds
+Refreshing native plugins compatible for Editor in 10.98 ms, found 6 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
@@ -128,11 +128,27 @@ Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
+VTPException: Port 9002 is already in use. Ensure that you are only running one instance of Unity at a time, and that any other applications are not using port 9002
+  at VRC.SDKBase.Editor.VRChatTestProtocolSDKServer.ListenerLoop (System.Threading.CancellationToken cancellationToken) [0x00195] in <8c33ac67c14b4f31a7515261397206c6>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+Cysharp.Threading.Tasks.UniTaskScheduler:PublishUnobservedTaskException(Exception) (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\UniTaskScheduler.cs:90)
+VRC.SDKBase.Editor.<ListenerLoop>d__4:MoveNext()
+Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskVoid`1:Run() (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\CompilerServices\StateMachineRunner.cs:104)
+Cysharp.Threading.Tasks.Awaiter:Callback(Object) (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\UniTask.Threading.cs:218)
+System.Threading.QueueUserWorkItemCallback:System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+System.Threading.ThreadPoolWorkQueue:Dispatch()
+System.Threading._ThreadPoolWaitCallback:PerformWaitCallback()
+
+(Filename: ./Packages/com.vrchat.base/Runtime/VRCSDK/Plugins/UniTask/Runtime/UniTaskScheduler.cs Line: 90)
+
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00040] in .\Library\PackageCache\com.unity.xr.oculus@4.2.0\Runtime\OculusLoader.cs:298 
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x0003d] in .\Library\PackageCache\com.unity.xr.oculus@4.2.0\Runtime\OculusLoader.cs:298 
   at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0008c] in .\Library\PackageCache\com.unity.xr.oculus@4.2.0\Runtime\OculusLoader.cs:283 
   at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
   at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <27124aa0e30a41659b903b822b959bc7>:0 
@@ -153,73 +169,149 @@ Mono: successfully reloaded assembly
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.126 seconds
-Domain Reload Profiling: 1733ms
-	BeginReloadAssembly (109ms)
+- Finished resetting the current domain, in  1.637 seconds
+Domain Reload Profiling: 3148ms
+	BeginReloadAssembly (153ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (8ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (17ms)
-	RebuildCommonClasses (25ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (30ms)
-	LoadAllAssembliesAndSetupDomain (435ms)
-		LoadAssemblies (324ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (1257ms)
+		LoadAssemblies (1193ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (173ms)
-			TypeCache.Refresh (153ms)
-				TypeCache.ScanAssembly (136ms)
-			ScanForSourceGeneratedMonoScriptInfo (14ms)
+		AnalyzeDomain (152ms)
+			TypeCache.Refresh (133ms)
+				TypeCache.ScanAssembly (118ms)
+			ScanForSourceGeneratedMonoScriptInfo (13ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (1126ms)
+	FinalizeReload (1637ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (986ms)
+		SetupLoadedEditorAssemblies (1518ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (30ms)
-			SetLoadedEditorAssemblies (4ms)
+			InitializePlatformSupportModulesInManaged (23ms)
+			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (109ms)
-			ProcessInitializeOnLoadAttributes (575ms)
-			ProcessInitializeOnLoadMethodAttributes (262ms)
-			AfterProcessingInitializeOnLoad (5ms)
+			BeforeProcessingInitializeOnLoad (77ms)
+			ProcessInitializeOnLoadAttributes (866ms)
+			ProcessInitializeOnLoadMethodAttributes (545ms)
+			AfterProcessingInitializeOnLoad (4ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (6ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 13.45 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 12.39 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 0.15 ms.
 Unloading 2756 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 107 unused Assets / (1.3 MB). Loaded Objects now: 3296.
-Memory consumption went from 182.7 MB to 181.4 MB.
-Total: 3.874400 ms (FindLiveObjects: 0.208700 ms CreateObjectMapping: 0.119700 ms MarkObjects: 2.925200 ms  DeleteObjects: 0.619300 ms)
+Unloading 107 unused Assets / (3.1 MB). Loaded Objects now: 3296.
+Memory consumption went from 182.5 MB to 179.4 MB.
+Total: 4.841100 ms (FindLiveObjects: 0.206600 ms CreateObjectMapping: 0.106300 ms MarkObjects: 3.815300 ms  DeleteObjects: 0.712000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/RadialMenuUtility.cs: 766e3a4298eb9159eb68f9e9f3ef1b8e -> 
+  custom:scripting/monoscript/fileName/RadialSliceTool.cs: 1478305b6ba55f7baab306b3da89aee9 -> 
+  custom:scripting/monoscript/fileName/AvatarDynamicReset.cs: daf492ad0dad0cb45c6647ac4c3f9cbf -> 
+  custom:scripting/monoscript/fileName/Vrc3WeightController.cs: 984d31065c279f56c14cd1e744a3e13d -> 
+  custom:scripting/monoscript/fileName/Vrc3Supporters.cs: accc7f1878047b8af5e347afa7b4d853 -> 
   custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:scripting/monoscript/fileName/VisualEpContainer.cs: 5ce3bf63582d85f7979e356e6ff9bb00 -> 
+  custom:scripting/monoscript/fileName/RadialSliceDynamic.cs: b61ff385c8bc4c00f9a35f8de5b4fff9 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/Vrc3VisualRender.cs: ca6fdba94f31beb0e7e786e83133fb87 -> 
+  custom:scripting/monoscript/fileName/OscSettings.cs: f7738f21220939c5d3f69e7a1c4bb912 -> 
+  custom:scripting/monoscript/fileName/RadialSliceBase.cs: 8f7a4bd1a407ceb64f97682cbf82dbb7 -> 
+  custom:scripting/monoscript/fileName/AnimatorControllerWeight.cs: 5286b7e725b62a664b404af15ba31d6e -> 
+  custom:scripting/monoscript/fileName/Vrc3WeightSlider.cs: a83d8e853dd2fbc744e48aaa41505880 -> 
+  custom:scripting/monoscript/fileName/Vrc3Param.cs: 73b9cfde0e0eca683c3319d8c673d099 -> 
   custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:scripting/monoscript/fileName/Vrc3DummyMode.cs: 383447c36f787b693c9027a68bf546ef -> 
+  custom:scripting/monoscript/fileName/BasePuppet.cs: 19d06eb4b369b94ca34b42e4385ed08d -> 
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/ModuleVrc3Styles.cs: 5a25a3660e36232d21979d93110ecdad -> 
+  custom:scripting/monoscript/fileName/VisualRadialElement.cs: 6a075b0bc3cfca01d64b081f00123706 -> 
+  custom:scripting/monoscript/fileName/RadialDescription.cs: bdb2b981c0b818c10778d15904ce5a54 -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/Vrc3DefaultParams.cs: 493039800f3e04936d5e6c860db75630 -> 
+  custom:scripting/monoscript/fileName/UdpListener.cs: 9deadff57c948dcb11f228b6633a5c1b -> 
+  custom:scripting/monoscript/fileName/VisualEpStyles.cs: 6701261c6bc17f482b3c07a1c4a993c7 -> 
+  custom:scripting/monoscript/fileName/RadialSliceButton.cs: f9a0ba90539dffe70bf64c1a7cdc18be -> 
+  custom:scripting/monoscript/fileName/AvatarFile.cs: 4fa82979f59cf3ed6304847b063f526c -> 
+  custom:scripting/monoscript/fileName/RadialCursor.cs: a2db00a106449575995c5f3aea5b49a5 -> 
+  custom:scripting/monoscript/fileName/Vrc3Warning.cs: 5b963067df497cbc15368357b8932145 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/OscModule.cs: a72b66cacef722ee78481db4b9831caf -> 
+  custom:scripting/monoscript/fileName/OscFile.cs: 4f31f6689a02f9726a4b1bd31f871011 -> 
+  custom:scripting/monoscript/fileName/OscPacket.cs: 897abd199c2cf21ba75beb1e41c8d12a -> 
+  custom:scripting/monoscript/fileName/RadialPuppet.cs: 5263508b66094c517a2c2b1a1c86987e -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/FourAxisPuppet.cs: 0e9b7c40f2ecfd8fc7fdebf127d6ad78 -> 
+  custom:scripting/monoscript/fileName/MotionItem.cs: fd00f0eca2e3f77ec9867819403ec5af -> 
+  custom:scripting/monoscript/fileName/AnimParameterAccessAvatarGmg.cs: 070aa13b7e57fdf9684305ad678b6ad4 -> 
   custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:scripting/monoscript/fileName/ModuleVrc3.cs: 76dea7a076907b18db28c2e547f12e1f -> 
+  custom:scripting/monoscript/fileName/RadialSliceControl.cs: 5e97b45dbb309a5e36011e1f02a7750e -> 
+  custom:scripting/monoscript/fileName/RadialMenu.cs: 705c599a429f6b7b280795783119be94 -> 
+  custom:scripting/monoscript/fileName/VisualEp.cs: f3e7b9648cd1ecfeb062bddfe443e369 -> 
+  custom:scripting/monoscript/fileName/Vrc3EditMode.cs: bde59799dbaf44a486ffcb382e5f805d -> 
+  custom:scripting/monoscript/fileName/Vrc3AvatarDebugWindow.cs: 586984cf345ea4370b4505a1fb3d336d -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/RadialSliceSupporter.cs: 3188e095315fff26fe5b742ef7c02b5d -> 
+  custom:scripting/monoscript/fileName/Vrc3FloatingMenu.cs: b7946bd16135761314ba9b359b3cf0f1 -> 
+  custom:scripting/monoscript/fileName/GmgDynamicFunction.cs: 4b4bb68cf288496f5a90cd7c80f4307c -> 
+  custom:scripting/monoscript/fileName/VisualRunningElement.cs: b3804d60cbac80f17129d6f15fe7b517 -> 
+  custom:scripting/monoscript/fileName/AvatarTools.cs: 42f9f48925be7166e2ff23ffd6f54f7f -> 
+  custom:scripting/monoscript/fileName/TwoAxisPuppet.cs: 0abb40df9432633c7be0e5272fabb256 -> 
+  custom:scripting/monoscript/fileName/BaseAxisPuppet.cs: c897cab21f128ea4a06c1f746b6a91fb -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/Vrc3OscDebugWindow.cs: abcfcb3a962f44cd47821ea75f1f84a7 -> 
+  custom:scripting/monoscript/fileName/UdpSender.cs: cb6cab032c452bf88c03780512b0ff5f -> 
+  custom:scripting/monoscript/fileName/ModuleVrc3ProxyOverride.cs: 9bdf927355eb2c1bd00465e5acabcf14 -> 
+  custom:scripting/monoscript/fileName/Vrc3TestMode.cs: ba94f42c89b8d2699c91b2abc11e6332 -> 
+  custom:scripting/monoscript/fileName/RadialPage.cs: 08c8a3ebdb9d82c6990bb315b906004b -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/EndpointControl.cs: a66e7350c431b6ad272ceceb8c91bd21 -> 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.571 seconds
-Refreshing native plugins compatible for Editor in 16.10 ms, found 6 plugins.
+[VTP] Stopping VTP service...
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+VRC.Core.Logger:Log (string,string,UnityEngine.Object)
+VRC.SDKBase.Editor.VRChatTestProtocolSDKServer:StopService ()
+UnityEditor.AssemblyReloadEvents:OnBeforeAssemblyReload ()
+
+- Loaded All Assemblies, in  0.572 seconds
+Refreshing native plugins compatible for Editor in 12.05 ms, found 6 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
+VTPException: Port 9002 is already in use. Ensure that you are only running one instance of Unity at a time, and that any other applications are not using port 9002
+  at VRC.SDKBase.Editor.VRChatTestProtocolSDKServer.ListenerLoop (System.Threading.CancellationToken cancellationToken) [0x00195] in <8c33ac67c14b4f31a7515261397206c6>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+Cysharp.Threading.Tasks.UniTaskScheduler:PublishUnobservedTaskException(Exception) (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\UniTaskScheduler.cs:90)
+VRC.SDKBase.Editor.<ListenerLoop>d__4:MoveNext()
+Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskVoid`1:Run() (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\CompilerServices\StateMachineRunner.cs:104)
+Cysharp.Threading.Tasks.Awaiter:Callback(Object) (at .\Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\UniTask\Runtime\UniTask.Threading.cs:218)
+System.Threading.QueueUserWorkItemCallback:System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+System.Threading.ThreadPoolWorkQueue:Dispatch()
+System.Threading._ThreadPoolWaitCallback:PerformWaitCallback()
+
+(Filename: ./Packages/com.vrchat.base/Runtime/VRCSDK/Plugins/UniTask/Runtime/UniTaskScheduler.cs Line: 90)
+
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
@@ -242,46 +334,46 @@ Mono: successfully reloaded assembly
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.057 seconds
-Domain Reload Profiling: 1625ms
-	BeginReloadAssembly (144ms)
+- Finished resetting the current domain, in  1.163 seconds
+Domain Reload Profiling: 1731ms
+	BeginReloadAssembly (152ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (39ms)
-	RebuildCommonClasses (24ms)
+		CreateAndSetChildDomain (54ms)
+	RebuildCommonClasses (27ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (359ms)
-		LoadAssemblies (321ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (350ms)
+		LoadAssemblies (317ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (109ms)
-			TypeCache.Refresh (86ms)
-				TypeCache.ScanAssembly (75ms)
-			ScanForSourceGeneratedMonoScriptInfo (16ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (1057ms)
+		AnalyzeDomain (96ms)
+			TypeCache.Refresh (73ms)
+				TypeCache.ScanAssembly (61ms)
+			ScanForSourceGeneratedMonoScriptInfo (18ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (1163ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (685ms)
+		SetupLoadedEditorAssemblies (823ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (28ms)
-			SetLoadedEditorAssemblies (5ms)
+			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (108ms)
-			ProcessInitializeOnLoadAttributes (253ms)
-			ProcessInitializeOnLoadMethodAttributes (286ms)
+			BeforeProcessingInitializeOnLoad (176ms)
+			ProcessInitializeOnLoadAttributes (282ms)
+			ProcessInitializeOnLoadMethodAttributes (329ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (6ms)
-Refreshing native plugins compatible for Editor in 13.13 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.14 ms.
+Refreshing native plugins compatible for Editor in 12.16 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 0.16 ms.
 Unloading 2621 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 86 unused Assets / (2.8 MB). Loaded Objects now: 3300.
-Memory consumption went from 158.3 MB to 155.5 MB.
-Total: 3.009900 ms (FindLiveObjects: 0.190600 ms CreateObjectMapping: 0.079200 ms MarkObjects: 2.136700 ms  DeleteObjects: 0.602700 ms)
+Unloading 86 unused Assets / (3.1 MB). Loaded Objects now: 3300.
+Memory consumption went from 154.4 MB to 151.3 MB.
+Total: 3.611900 ms (FindLiveObjects: 0.185500 ms CreateObjectMapping: 0.085200 ms MarkObjects: 2.610800 ms  DeleteObjects: 0.729000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -300,12 +392,36 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 12.67 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.14 ms.
+Refreshing native plugins compatible for Editor in 17.56 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 0.20 ms.
 Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 15 unused Assets / (2.8 MB). Loaded Objects now: 3300.
-Memory consumption went from 116.7 MB to 113.9 MB.
-Total: 3.946600 ms (FindLiveObjects: 0.254100 ms CreateObjectMapping: 0.218900 ms MarkObjects: 2.687300 ms  DeleteObjects: 0.785200 ms)
+Unloading 15 unused Assets / (3.1 MB). Loaded Objects now: 3300.
+Memory consumption went from 113.6 MB to 110.6 MB.
+Total: 3.559600 ms (FindLiveObjects: 0.179700 ms CreateObjectMapping: 0.108600 ms MarkObjects: 2.681700 ms  DeleteObjects: 0.588400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 11.73 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 0.13 ms.
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (3.1 MB). Loaded Objects now: 3300.
+Memory consumption went from 113.1 MB to 110.0 MB.
+Total: 4.054700 ms (FindLiveObjects: 0.182400 ms CreateObjectMapping: 0.083900 ms MarkObjects: 2.960500 ms  DeleteObjects: 0.827000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):

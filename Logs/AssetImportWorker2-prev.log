@@ -1,23 +1,23 @@
 Using pre-set license
-Built from '2022.3/staging' branch; Version is '2022.3.6f1 (b9e6e7e9fa2d) revision 12183271'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'en' Physical Memory: 65372 MB
+Built from '2022.3/staging' branch; Version is '2022.3.22f1 (887be4894c44) revision 8944612'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Enterprise' Language: 'en' Physical Memory: 48988 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Unity.exe
+C:\Program Files\Unity 2022.3.22f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker2
 -projectPath
-D:/Source/VRC-Red-Panda-Floof
+C:/source/VRC-Red-Panda-Floof
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-61555
-Successfully changed project path to: D:/Source/VRC-Red-Panda-Floof
-D:/Source/VRC-Red-Panda-Floof
+50617
+Successfully changed project path to: C:/source/VRC-Red-Panda-Floof
+C:/source/VRC-Red-Panda-Floof
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,64 +49,69 @@ D:/Source/VRC-Red-Panda-Floof
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [14660] Host "[IP] 192.168.1.138 [Port] 0 [Flags] 2 [Guid] 2091653974 [EditorId] 2091653974 [Version] 1048832 [Id] WindowsEditor(7,Lilithes-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [53424] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 850000909 [EditorId] 850000909 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [14660] Host "[IP] 192.168.1.138 [Port] 0 [Flags] 2 [Guid] 2091653974 [EditorId] 2091653974 [Version] 1048832 [Id] WindowsEditor(7,Lilithes-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [53424] Host "[IP] 192.168.69.138 [Port] 0 [Flags] 2 [Guid] 850000909 [EditorId] 850000909 [Version] 1048832 [Id] WindowsEditor(7,Lilithe-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 12.43 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.69 ms.
-Initialize engine version: 2022.3.6f1 (b9e6e7e9fa2d)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Source/VRC-Red-Panda-Floof/Assets
+[Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
+Refreshing native plugins compatible for Editor in 27.80 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 1.19 ms.
+Initialize engine version: 2022.3.22f1 (887be4894c44)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.3.22f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/source/VRC-Red-Panda-Floof/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: AMD Radeon RX 6900 XT (ID=0x73bf)
     Vendor:   ATI
     VRAM:     16338 MB
-    Driver:   31.0.12027.9001
+    Driver:   32.0.21030.2001
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56812
+Mono path[0] = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 2022.3.22f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56476
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005176 seconds.
-- Loaded All Assemblies, in  0.366 seconds
+Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity 2022.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006536 seconds.
+- Loaded All Assemblies, in  0.297 seconds
 Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.350 seconds
-Domain Reload Profiling: 717ms
+- Finished resetting the current domain, in  0.289 seconds
+Domain Reload Profiling: 585ms
 	BeginReloadAssembly (84ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (57ms)
-	LoadAllAssembliesAndSetupDomain (181ms)
-		LoadAssemblies (81ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (129ms)
+		LoadAssemblies (83ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (177ms)
-			TypeCache.Refresh (175ms)
-				TypeCache.ScanAssembly (160ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
-			ResolveRequiredComponents (1ms)
-	FinalizeReload (351ms)
+		AnalyzeDomain (127ms)
+			TypeCache.Refresh (126ms)
+				TypeCache.ScanAssembly (114ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (290ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (275ms)
+		SetupLoadedEditorAssemblies (239ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (9ms)
+			InitializePlatformSupportModulesInManaged (93ms)
+			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (3ms)
-			ProcessInitializeOnLoadAttributes (188ms)
-			ProcessInitializeOnLoadMethodAttributes (66ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (97ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -114,35 +119,27 @@ Domain Reload Profiling: 717ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.993 seconds
-Refreshing native plugins compatible for Editor in 6.63 ms, found 6 plugins.
+- Loaded All Assemblies, in  6.075 seconds
+Refreshing native plugins compatible for Editor in 12.36 ms, found 6 plugins.
 Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-System.ArgumentNullException: Value cannot be null.
-Parameter name: path
-  at System.IO.Directory.CreateDirectory (System.String path) [0x00003] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at VRC.SDKBase.Editor.VRCPackageSettings.EnsurePathExists () [0x0000b] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:45 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Load () [0x00000] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:50 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Create () [0x00005] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:19 
-  at VRC.SDKBase.Editor.SampleHintCreator..cctor () [0x00007] in .\Packages\com.vrchat.base\Editor\VRCSDK\SampleHintCreator.cs:18 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
 System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00040] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:282 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:267 
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00040] in .\Library\PackageCache\com.unity.xr.oculus@4.2.0\Runtime\OculusLoader.cs:298 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0008c] in .\Library\PackageCache\com.unity.xr.oculus@4.2.0\Runtime\OculusLoader.cs:283 
   at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <eef08f56e2e042f1b3027eca477293d9>:0 
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <27124aa0e30a41659b903b822b959bc7>:0 
    --- End of inner exception stack trace ---
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x000a5] in <347e3e2bef8c4deb82c9790c6e198135>:0 
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <27124aa0e30a41659b903b822b959bc7>:0 
+  at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x000a5] in <80a8ce1980c648dca8e68f0d8aa3b930>:0 
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
@@ -156,352 +153,48 @@ Mono: successfully reloaded assembly
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  1.295 seconds
-Domain Reload Profiling: 2285ms
-	BeginReloadAssembly (134ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (43ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (58ms)
-	LoadAllAssembliesAndSetupDomain (743ms)
-		LoadAssemblies (360ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (442ms)
-			TypeCache.Refresh (404ms)
-				TypeCache.ScanAssembly (379ms)
-			ScanForSourceGeneratedMonoScriptInfo (33ms)
-			ResolveRequiredComponents (5ms)
-	FinalizeReload (1296ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1086ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (4ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (103ms)
-			ProcessInitializeOnLoadAttributes (676ms)
-			ProcessInitializeOnLoadMethodAttributes (287ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.16 seconds
-Refreshing native plugins compatible for Editor in 7.72 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.09 ms.
-Unloading 2466 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 86 unused Assets / (1.1 MB). Loaded Objects now: 2996.
-Memory consumption went from 133.3 MB to 132.2 MB.
-Total: 7.720000 ms (FindLiveObjects: 0.321300 ms CreateObjectMapping: 0.819900 ms MarkObjects: 5.844200 ms  DeleteObjects: 0.733300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-========================================================================
-Received Import Request.
-  Time since last request: 323376.227296 seconds.
-  path: Assets/FastFur_Color4_HairMap.png
-  artifactKey: Guid(7ae4546bf57f06f4891876f3e4d14ad4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color4_HairMap.png using Guid(7ae4546bf57f06f4891876f3e4d14ad4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5032f1746402cea5b05f3a6c2b56fe9a') in 0.073706 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/FastFur_Color2_HairMap.png
-  artifactKey: Guid(697ff114979a74f45892cd7250e4d0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color2_HairMap.png using Guid(697ff114979a74f45892cd7250e4d0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42212e3340570cacaa7902d99329cdd8') in 0.021351 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/FastFur_Color2_FurShape.png
-  artifactKey: Guid(6e85e10a8fbead147b193546de4504bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color2_FurShape.png using Guid(6e85e10a8fbead147b193546de4504bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89bfe9fd430449a614d19d3311edaeae') in 0.018423 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/FastFur_Color4_FurShape.png
-  artifactKey: Guid(6d0178acb4107c444abc39ba97ad1ae1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color4_FurShape.png using Guid(6d0178acb4107c444abc39ba97ad1ae1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6687881cc7597bf99d347d4dee4b391') in 0.009549 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/FastFur_Color3_HairMapCoarse.png
-  artifactKey: Guid(d635ab1baac94f640a95fc629c1988ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color3_HairMapCoarse.png using Guid(d635ab1baac94f640a95fc629c1988ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fcdb701a7a196d2be3fcbca8417caeb') in 0.020770 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/FastFur_Color1_HairMap.png
-  artifactKey: Guid(fde54f8b7d8a17d43bac38d1b3cfed90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color1_HairMap.png using Guid(fde54f8b7d8a17d43bac38d1b3cfed90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '422c502e2a94ec5b4241a1a4f22a3898') in 0.019786 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/FastFur_Color3_HairMap.png
-  artifactKey: Guid(32dbddfb19447514d962f195356be96b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color3_HairMap.png using Guid(32dbddfb19447514d962f195356be96b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa150b224f0207a449d52c506d82940') in 0.024035 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/FastFur_Color1_HairMapCoarse.png
-  artifactKey: Guid(8ad9513a8da0e9b48bb4d918f054cc43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color1_HairMapCoarse.png using Guid(8ad9513a8da0e9b48bb4d918f054cc43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03e9459f26606c9f3bb04374b7037e7d') in 0.017463 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/FastFur_Color4_Markings.png
-  artifactKey: Guid(7b6995548047f1547a7e0ab0763baae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color4_Markings.png using Guid(7b6995548047f1547a7e0ab0763baae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4897c62ce0059694bf3c9552803fcf85') in 0.016119 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/FastFur_Color1_FurShape.png
-  artifactKey: Guid(f7254dc6da8e8e64ca2ba1ff7d6ebff8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color1_FurShape.png using Guid(f7254dc6da8e8e64ca2ba1ff7d6ebff8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62d79e4b21535581e9def45f2bcd07b3') in 0.012061 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/FastFur_Color3_FurShape.png
-  artifactKey: Guid(f1551fe89835d2c43a56602ea69180cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color3_FurShape.png using Guid(f1551fe89835d2c43a56602ea69180cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f10d939f0b1423a87655e054558226bb') in 0.014934 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/FastFur_Color2_HairMapCoarse.png
-  artifactKey: Guid(91ca95b3dd048a045ae24157cf56f787) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color2_HairMapCoarse.png using Guid(91ca95b3dd048a045ae24157cf56f787) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '291a1ff0543e914479b662d13cc32ad6') in 0.016033 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/FastFur_Color4_HairMapCoarse.png
-  artifactKey: Guid(1ed0d31fa29a93d4a9a3fdcd492838db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FastFur_Color4_HairMapCoarse.png using Guid(1ed0d31fa29a93d4a9a3fdcd492838db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c31ce1fecf7bf9d0c1382b4178a64f0') in 0.018841 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.939 seconds
-Refreshing native plugins compatible for Editor in 11.22 ms, found 6 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-System.ArgumentNullException: Value cannot be null.
-Parameter name: path
-  at System.IO.Directory.CreateDirectory (System.String path) [0x00003] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at VRC.SDKBase.Editor.VRCPackageSettings.EnsurePathExists () [0x0000b] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:45 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Load () [0x00000] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:50 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Create () [0x00005] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:19 
-  at VRC.SDKBase.Editor.SampleHintCreator..cctor () [0x00007] in .\Packages\com.vrchat.base\Editor\VRCSDK\SampleHintCreator.cs:18 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00040] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:282 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:267 
-  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <eef08f56e2e042f1b3027eca477293d9>:0 
-   --- End of inner exception stack trace ---
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x000a5] in <347e3e2bef8c4deb82c9790c6e198135>:0 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
-
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  0.976 seconds
-Domain Reload Profiling: 1915ms
-	BeginReloadAssembly (280ms)
+- Finished resetting the current domain, in  1.343 seconds
+Domain Reload Profiling: 7415ms
+	BeginReloadAssembly (110ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (58ms)
-	RebuildCommonClasses (38ms)
-	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (569ms)
-		LoadAssemblies (295ms)
+		CreateAndSetChildDomain (17ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (5895ms)
+		LoadAssemblies (5770ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (334ms)
-			TypeCache.Refresh (327ms)
-				TypeCache.ScanAssembly (307ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (977ms)
+		AnalyzeDomain (187ms)
+			TypeCache.Refresh (166ms)
+				TypeCache.ScanAssembly (148ms)
+			ScanForSourceGeneratedMonoScriptInfo (15ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1344ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (690ms)
+		SetupLoadedEditorAssemblies (1197ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
+			InitializePlatformSupportModulesInManaged (29ms)
 			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (87ms)
-			ProcessInitializeOnLoadAttributes (335ms)
-			ProcessInitializeOnLoadMethodAttributes (253ms)
-			AfterProcessingInitializeOnLoad (4ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (8ms)
-Refreshing native plugins compatible for Editor in 8.59 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.07 ms.
-Unloading 2403 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 81 unused Assets / (1.0 MB). Loaded Objects now: 3003.
-Memory consumption went from 120.9 MB to 119.9 MB.
-Total: 4.553800 ms (FindLiveObjects: 0.267000 ms CreateObjectMapping: 0.103300 ms MarkObjects: 3.325800 ms  DeleteObjects: 0.856300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-========================================================================
-Received Import Request.
-  Time since last request: 396.017881 seconds.
-  path: Assets/RedPanda/RedPanda.prefab
-  artifactKey: Guid(029a1c614f5010642b60c4a93c18f5fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/RedPanda.prefab using Guid(029a1c614f5010642b60c4a93c18f5fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '309d6dfd3af02d524485b2865d6e3b92') in 7.471286 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 268
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.797 seconds
-Refreshing native plugins compatible for Editor in 4.65 ms, found 6 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-System.ArgumentNullException: Value cannot be null.
-Parameter name: path
-  at System.IO.Directory.CreateDirectory (System.String path) [0x00003] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at VRC.SDKBase.Editor.VRCPackageSettings.EnsurePathExists () [0x0000b] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:45 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Load () [0x00000] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:50 
-  at VRC.SDKBase.Editor.VRCPackageSettings.Create () [0x00005] in .\Packages\com.vrchat.base\Editor\VRCSDK\Dependencies\VRChat\VRCPackageSettings.cs:19 
-  at VRC.SDKBase.Editor.SampleHintCreator..cctor () [0x00007] in .\Packages\com.vrchat.base\Editor\VRCSDK\SampleHintCreator.cs:18 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00040] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:282 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in .\Library\PackageCache\com.unity.xr.oculus@4.0.0\Runtime\OculusLoader.cs:267 
-  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <eef08f56e2e042f1b3027eca477293d9>:0 
-   --- End of inner exception stack trace ---
-  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <eef08f56e2e042f1b3027eca477293d9>:0 
-  at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x000a5] in <347e3e2bef8c4deb82c9790c6e198135>:0 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
-
-Mono: successfully reloaded assembly
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-- Finished resetting the current domain, in  0.762 seconds
-Domain Reload Profiling: 1557ms
-	BeginReloadAssembly (241ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (48ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (34ms)
-	LoadAllAssembliesAndSetupDomain (476ms)
-		LoadAssemblies (249ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (279ms)
-			TypeCache.Refresh (275ms)
-				TypeCache.ScanAssembly (259ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (762ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (520ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (3ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (75ms)
-			ProcessInitializeOnLoadAttributes (261ms)
-			ProcessInitializeOnLoadMethodAttributes (173ms)
-			AfterProcessingInitializeOnLoad (4ms)
+			BeforeProcessingInitializeOnLoad (164ms)
+			ProcessInitializeOnLoadAttributes (686ms)
+			ProcessInitializeOnLoadMethodAttributes (309ms)
+			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (7ms)
-Refreshing native plugins compatible for Editor in 6.10 ms, found 6 plugins.
-Preloading 2 native plugins for Editor in 0.08 ms.
-Unloading 2403 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 81 unused Assets / (1.0 MB). Loaded Objects now: 3015.
-Memory consumption went from 127.2 MB to 126.2 MB.
-Total: 3.485800 ms (FindLiveObjects: 0.186100 ms CreateObjectMapping: 0.085700 ms MarkObjects: 2.624100 ms  DeleteObjects: 0.588800 ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 12.79 ms, found 6 plugins.
+Preloading 2 native plugins for Editor in 0.14 ms.
+Unloading 2756 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 107 unused Assets / (1.3 MB). Loaded Objects now: 3296.
+Memory consumption went from 180.5 MB to 179.2 MB.
+Total: 3.718300 ms (FindLiveObjects: 0.206000 ms CreateObjectMapping: 0.090800 ms MarkObjects: 2.847700 ms  DeleteObjects: 0.572800 ms)
 
-Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
@@ -512,76 +205,103 @@ AssetImportParameters requested are different than current active one (requested
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 330.170058 seconds.
-  path: Assets/Models/Red Panda Floof/Textures/Atlas/Atlas_00001.png
-  artifactKey: Guid(e2ae59c079bae904d848f79b5219f81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Red Panda Floof/Textures/Atlas/Atlas_00001.png using Guid(e2ae59c079bae904d848f79b5219f81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f60b1a0c488a76e0d0125354e8a2248b') in 0.059273 seconds
+  Time since last request: 418067.171176 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Color3.mat
+  artifactKey: Guid(d55bbf37433d65045886a44a3b106914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Color3.mat using Guid(d55bbf37433d65045886a44a3b106914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b6dc2ecbff8d2a14da8af97f40bbf85') in 3.424900 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Details.mat
+  artifactKey: Guid(344a89b6b4c5ca042812f377987a15f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Details.mat using Guid(344a89b6b4c5ca042812f377987a15f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0f02a63e639c3f2291d48f1d6a129ed') in 0.032269 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.194304 seconds.
-  path: Assets/Models/Red Panda Floof/Textures/Color1TextureForFurShaders.png
-  artifactKey: Guid(ec143d0fa408eeb45bfb830c9f00d6b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Red Panda Floof/Textures/Color1TextureForFurShaders.png using Guid(ec143d0fa408eeb45bfb830c9f00d6b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48ea2930e6a3f6eec74b7fcfbf2a6de3') in 0.021009 seconds
+  Time since last request: 0.000026 seconds.
+  path: Assets/Models/Red Panda Floof/Materials
+  artifactKey: Guid(e846d6acbb082a74e8075b2dfe55b7fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials using Guid(e846d6acbb082a74e8075b2dfe55b7fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26769886b4e0ab681f02f9b81e0abb08') in 0.000488 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000101 seconds.
+  path: Assets/Models/Red Panda Floof/RedPandaBigTail.fbx
+  artifactKey: Guid(4bf6e21b9eb2bbd4b890a9c46f021e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/RedPandaBigTail.fbx using Guid(4bf6e21b9eb2bbd4b890a9c46f021e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'daabc0e0e0a4a9f219b1bdc5717875e1') in 0.260952 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 211
+========================================================================
+Received Import Request.
+  Time since last request: 22.906353 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Atlas_00002 1.mat
+  artifactKey: Guid(171cacb9f37940745b7a324636fefa37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Atlas_00002 1.mat using Guid(171cacb9f37940745b7a324636fefa37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31d4c07e03d43c69028d4360d2163eb0') in 0.049855 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 7.717704 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Q_Atlas_00002 1.mat
+  artifactKey: Guid(171cacb9f37940745b7a324636fefa37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Q_Atlas_00002 1.mat using Guid(171cacb9f37940745b7a324636fefa37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb8fe6c85b002bc90784477e1177f9f5') in 0.039993 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 2.280348 seconds.
+  path: Assets/Models/Red Panda Floof/Textures/Atlas/Desktop/Atlas_00002.png
+  artifactKey: Guid(59a01cbc139f7aa4c8e583007ea24b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Textures/Atlas/Desktop/Atlas_00002.png using Guid(59a01cbc139f7aa4c8e583007ea24b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '424e3a2cf04891ffda13674734cb0e4d') in 0.039838 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/RedPanda/Textures/Color2CustomTexture.png
-  artifactKey: Guid(07c891a65bf21e944b6dcd1a2e010094) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/Textures/Color2CustomTexture.png using Guid(07c891a65bf21e944b6dcd1a2e010094) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48af634b063a61c409b5419322ba71d8') in 0.043530 seconds
+  Time since last request: 3.229826 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Details 1.mat
+  artifactKey: Guid(c6d4398ea4969e642bfb758b8539694c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Details 1.mat using Guid(c6d4398ea4969e642bfb758b8539694c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9454b0f8d34ebbc542b5b44663cc0bf3') in 0.030087 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/RedPanda/Textures/Color1Texture.png
-  artifactKey: Guid(ca93e213e26646c4ab24a5cfa1294a0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/Textures/Color1Texture.png using Guid(ca93e213e26646c4ab24a5cfa1294a0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '017d03b14d1b05daad97f453ce08bccd') in 0.017836 seconds
+  Time since last request: 8.085596 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Q_Details 1.mat
+  artifactKey: Guid(c6d4398ea4969e642bfb758b8539694c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Q_Details 1.mat using Guid(c6d4398ea4969e642bfb758b8539694c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88b6e8a33f0654cbdbe391a1de04aa15') in 0.026362 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 4.435406 seconds.
-  path: Assets/Models/Red Panda Floof/Textures/Color3TextureForFurShaders.png
-  artifactKey: Guid(23c16cca37a35244cad16fb22eaa6fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Red Panda Floof/Textures/Color3TextureForFurShaders.png using Guid(23c16cca37a35244cad16fb22eaa6fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d85bee4864caeaf108a193eecc27fbc') in 0.016079 seconds
+  Time since last request: 17.596230 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Atlas_00001 1.mat
+  artifactKey: Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Atlas_00001 1.mat using Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a330884b2778a9272b27364b5984b426') in 0.028646 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 122.162320 seconds.
-  path: Assets/RedPanda/Textures/Color3Texture.png
-  artifactKey: Guid(8f9cbdbd7fc88454189cccb40e3d4a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/Textures/Color3Texture.png using Guid(8f9cbdbd7fc88454189cccb40e3d4a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84ed7258476de6a098a9c5fa74de7f99') in 0.022055 seconds
+  Time since last request: 9.502890 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Q_Atlas_00001 1.mat
+  artifactKey: Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Q_Atlas_00001 1.mat using Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5971d6e11c412b6d87ab25b435375733') in 0.027593 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.274057 seconds.
-  path: Assets/RedPanda/Textures/Color4Texture.png
-  artifactKey: Guid(28bfcce83899a78478c215524237eb58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/Textures/Color4Texture.png using Guid(28bfcce83899a78478c215524237eb58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e38c4e9bbe9ef02993906538450703d8') in 0.015281 seconds
+  Time since last request: 49.576881 seconds.
+  path: Assets/Models/Red Panda Floof/Materials/Q_Atlas_00001 1.mat
+  artifactKey: Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Red Panda Floof/Materials/Q_Atlas_00001 1.mat using Guid(8498586deee4bf24ba99af08b45ca8c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbdf6f5fc7528d06c7d44c9958a39f85') in 0.222398 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/RedPanda/Textures/DetailsCustom.png
-  artifactKey: Guid(81fb4be4b36dfeb4282f4810311890a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/RedPanda/Textures/DetailsCustom.png using Guid(81fb4be4b36dfeb4282f4810311890a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f90731a821d1ec49a2e7bb9baaf9e9e4') in 0.017699 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+Number of asset objects unloaded after import = 3
